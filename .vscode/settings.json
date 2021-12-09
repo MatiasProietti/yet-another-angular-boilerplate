@@ -14,5 +14,9 @@
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
+  },
+
+  "eslint.options": {
+    "extensions": [".ts", ".html"]
   }
 }

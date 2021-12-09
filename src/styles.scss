@@ -1,1 +1,49 @@
-/* You can add global styles to this file, and also import other style files */
+@use "@angular/material" as mat;
+@import "./styles/fonts.scss";
+@import "./styles/palettes.scss";
+@import "./styles/themes/dark-theme.scss";
+@import "./styles/themes/light-theme.scss";
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+}
+
+// Compute font config
+@include mat.core($fontConfig);
+
+// Theme Config
+
+body {
+  --warn-color: #dc2626;
+  --warn-lighter-color: #f5bebe;
+  --warn-darker-color: #ce1717;
+  --text-warn-color: #{$light-primary-text};
+  --text-warn-lighter-color: #{$dark-primary-text};
+  --text-warn-darker-color: #{$light-primary-text};
+
+  --accent-color: #1e293b;
+  --accent-lighter-color: #bcbfc4;
+  --accent-darker-color: #121926;
+  --text-accent-color: #{$light-primary-text};
+  --text-accent-lighter-color: #{$dark-primary-text};
+  --text-accent-darker-color: #{$light-primary-text};
+
+  --primary-color: #4f46e5;
+  --primary-lighter-color: #cac8f7;
+  --primary-darker-color: #362fda;
+  --text-primary-color: #{$light-primary-text};
+  --text-primary-lighter-color: #{$dark-primary-text};
+  --text-primary-darker-color: #{$light-primary-text};
+}
+
+.light-theme {
+  @include mat.all-component-themes($lightTheme);
+}
+
+.dark-theme {
+  @include mat.all-component-themes($darkTheme);
+}
