@@ -1,6 +1,5 @@
 # Yet Another Angular Boilerplate
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.4.
 [![license](https://img.shields.io/github/license/MatiasProietti/yet-another-angular-boilerplate)](https://choosealicense.com/licenses/mit/) ![node](https://img.shields.io/badge/node-%3E%3D16.13-brightgreen) ![angular](https://img.shields.io/badge/angular-13.0.x-brightgreen)
 
 ## todo
