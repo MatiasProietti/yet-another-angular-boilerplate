@@ -1,10 +1,22 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
+import { MatIconRegistry } from "@angular/material/icon";
+import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.scss"],
 })
 export class AppComponent {
-  title = 'yet-another-angular-boilerplate';
+  title = "yet-another-angular-boilerplate";
+
+  constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {
+    /* 
+    Using this resolver we remove the need to register each icon we want to use.
+    */
+    this.matIconRegistry.addSvgIconResolver((name: string, namespace: string): SafeResourceUrl => {
+      const route = namespace ? `/assets/icons/${namespace}/${name}.svg` : `/assets/icons/${name}.svg`;
+      return this.domSanitizer.bypassSecurityTrustResourceUrl(route);
+    });
+  }
 }

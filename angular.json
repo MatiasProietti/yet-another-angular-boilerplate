@@ -32,12 +32,10 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              { "input": "node_modules/@fortawesome/fontawesome-free/svgs/", "output": "assets/icons", "glob": "**/*" }
             ],
-            "styles": [
-              "src/styles.scss",
-              "bootstrap/dist/css/bootstrap-grid.min.css"
-            ],
+            "styles": ["src/styles.scss", "bootstrap/dist/css/bootstrap-grid.min.css"],
             "scripts": []
           },
           "configurations": {
@@ -74,6 +72,7 @@
           "defaultConfiguration": "production"
         },
         "serve": {
+          "options": { "liveReload": true, "hmr": true },
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
@@ -101,22 +100,17 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              { "input": "node_modules/@fortawesome/fontawesome-free/svgs/", "output": "assets/icons", "glob": "**/*" }
             ],
-            "styles": [
-              "src/styles.scss",
-              "bootstrap/dist/css/bootstrap-grid.min.css"
-            ],
+            "styles": ["src/styles.scss", "bootstrap/dist/css/bootstrap-grid.min.css"],
             "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "src/**/*.ts",
-              "src/**/*.html"
-            ]
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
         }
       }
