@@ -1,0 +1,12 @@
+.col {
+  height: 1px;
+  background-clip: content-box;
+
+  &.left {
+    padding-right: 0 !important;
+  }
+
+  &.right {
+    padding-left: 0 !important;
+  }
+}
