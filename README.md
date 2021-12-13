@@ -8,8 +8,19 @@
 - [x] Add and configure ESLint and Prettier
 - [x] Configure nvm, vscode and TS configurations
 - [x] Add and configure Angular Material and bootstrap
-- [ ] Add Authentication
+- [ ] Authentication
+  - [x] Login
+  - [ ] Register
+  - [ ] Forgot Password
+  - [ ] Reset Password
+  - [ ] Confirm Email
+  - [ ] Pending Confirmation
+  - [ ] Logout
+  - [ ] Service
+  - [ ] Auth Guard
+  - [ ] Model
 - [ ] Add fake/mock backend
+- [ ] Optimize assets
 
 ## Project Structure
 
