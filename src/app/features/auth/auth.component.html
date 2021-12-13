@@ -1,0 +1,15 @@
+<div class="background" [style.background-image]="this.background"></div>
+
+<!--<button mat-raised-button (click)="this.themeSrv.toggleTheme()" style="position: absolute; height: 50px">Toggle</button>-->
+
+<div class="container">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-4">
+      <div class="row">
+        <app-auth-card>
+          <router-outlet></router-outlet>
+        </app-auth-card>
+      </div>
+    </div>
+  </div>
+</div>

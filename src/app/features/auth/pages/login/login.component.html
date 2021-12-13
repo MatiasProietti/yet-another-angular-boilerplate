@@ -1,0 +1,84 @@
+<div class="col-12">
+  <div class="row">
+    <div class="col-auto mat-display-1">Log in</div>
+  </div>
+
+  <div class="row">
+    <div class="body-2">Don't have an account? <a routerLink="/auth/register">Sign up</a></div>
+  </div>
+
+  <form [formGroup]="loginForm">
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Username</mat-label>
+        <input matInput type="text" formControlName="username" autocomplete="username" />
+        <div class="suffix-wrapper" matSuffix>
+          <mat-icon>account_box</mat-icon>
+        </div>
+        <mat-error> Username is required </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput [type]="this.revealPassword ? 'text' : 'password'" formControlName="password" autocomplete="current-password" />
+
+        <div class="suffix-wrapper" matSuffix>
+          <mat-icon *ngIf="this.loginForm.get('password')?.invalid; else icon_show">vpn_key</mat-icon>
+        </div>
+
+        <ng-template #icon_show>
+          <button mat-icon-button matSuffix (click)="toggleRevealPassword()">
+            <mat-icon>{{ this.revealPassword ? "visibility" : "visibility_off" }}</mat-icon>
+          </button>
+        </ng-template>
+
+        <mat-error> Password is required </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="row justify-content-between">
+      <div class="col-auto"><mat-checkbox color="primary">Remember me</mat-checkbox></div>
+      <div class="col-auto">
+        <a routerLink="/auth/forgot-password">Forgot password?</a>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <button mat-raised-button color="primary" class="login-button">Log In</button>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <app-divider color="#e2e8f0"><span>Or continue with</span></app-divider>
+      </div>
+    </div>
+
+    <div class="row justify-content-center"></div>
+  </form>
+
+  <div class="row justify-content-between">
+    <div class="col-4">
+      <button mat-stroked-button class="login-button">
+        <mat-icon svgIcon="brands:github" style="color: #171515"></mat-icon>
+      </button>
+    </div>
+
+    <div class="col-4">
+      <button mat-stroked-button class="login-button">
+        <mat-icon svgIcon="brands:discord" style="color: #5865f2"></mat-icon>
+      </button>
+    </div>
+
+    <div class="col-4">
+      <button mat-stroked-button class="login-button"><mat-icon svgIcon="brands:google-color"></mat-icon></button>
+    </div>
+  </div>
+</div>
+
+<!--
+  @todo: implement auth0
+  @todo: implement recaptcha
+-->

@@ -1,0 +1,48 @@
+.mat-display-1 {
+  color: #1e293b;
+  font-weight: 800;
+  letter-spacing: -0.05rem;
+  text-rendering: optimizeLegibility;
+  margin-bottom: 0px !important;
+}
+
+// @todo: replace color with variable
+
+.body-2 {
+  margin-top: 2px;
+}
+
+form {
+  margin-top: 32px;
+}
+
+.suffix-wrapper {
+  width: 2.5em;
+  height: 2.5em;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+mat-form-field {
+  margin-bottom: 10px;
+}
+
+.login-button {
+  width: 100%;
+  border-radius: 99999px;
+  margin-top: 22px;
+  margin-bottom: 22px;
+  height: 46px;
+}
+
+app-divider {
+  span {
+    color: #64748b;
+  }
+}
+
+.test {
+  border-top: 1px solid;
+}
