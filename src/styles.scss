@@ -47,3 +47,24 @@ body {
 .dark-theme {
   @include mat.all-component-themes($darkTheme);
 }
+
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+// Fixes bad vertical align when using icons inside mat buttons. (caused by line-height)
+.mat-button,
+.mat-raised-button,
+.mat-flat-button,
+.mat-stroked-button,
+.mat-icon-button,
+.mat-fab,
+.mat-mini-fab {
+  line-height: 1 !important;
+}
