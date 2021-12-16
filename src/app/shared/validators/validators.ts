@@ -17,18 +17,18 @@ export class Validators extends angularValidators {
    *    confirmPassword: ['12345678', Validators.controlsMatch('password', 'confirmPassword')]
    * });
    *
-   * console.log(form.password.errors); // {passwordMatch: true}
+   * console.log(form.password.errors); // {controlsMatch: true}
    * ```
    *
    * @returns A validator function that returns an error map with the
-   * `passwordMatch` property if the validation check fails, otherwise `null`.
+   * `controlsMatch` property if the validation check fails, otherwise `null`.
    *
    * @see `updateValueAndValidity()`
    *
    */
   static controlsMatch(controlName: string, matchControlName: string): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
-      return control.parent?.get(controlName)?.value === control.parent?.get(matchControlName)?.value ? null : { passwordMatch: true };
+      return control.parent?.get(controlName)?.value === control.parent?.get(matchControlName)?.value ? null : { controlsMatch: true };
     };
   }
 }
