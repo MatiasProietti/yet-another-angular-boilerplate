@@ -30,8 +30,7 @@ export class AuthComponent implements OnInit {
     this.themeSrv.activeTheme.subscribe((theme) => {
       const images = this.images[theme];
       const randomIndex = random.integer(0, images.length - 1);
-      const gradientColor = "--gradient-" + theme;
-      this.background = `linear-gradient(to right, var(${gradientColor}), var(${gradientColor})), url("${images[randomIndex]}")`;
+      this.background = `linear-gradient(to right, var(--background-gradient-color), var(--background-gradient-color)), url("${images[randomIndex]}")`;
     });
   }
 

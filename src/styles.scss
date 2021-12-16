@@ -42,10 +42,12 @@ body {
 
 .light-theme {
   @include mat.all-component-themes($lightTheme);
+  --background-gradient-color: #ffffff1a;
 }
 
 .dark-theme {
   @include mat.all-component-themes($darkTheme);
+  --background-gradient-color: #0000001a;
 }
 
 a {
@@ -67,4 +69,15 @@ a:hover {
 .mat-fab,
 .mat-mini-fab {
   line-height: 1 !important;
+}
+
+// Fixes word wrap problems when the label is too large in mat-checkbox
+mat-checkbox {
+  label.mat-checkbox-layout {
+    white-space: normal;
+
+    .mat-checkbox-inner-container {
+      margin-top: 4px !important;
+    }
+  }
 }
