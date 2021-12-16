@@ -3,7 +3,7 @@ import { CommonModule } from "@angular/common";
 
 import { AuthRoutingModule } from "./auth-routing.module";
 import { LoginComponent } from "./pages/login/login.component";
-import { CardComponent } from "./components/card/card.component";
+import { AuthCardComponent } from "./components/auth-card/auth-card.component";
 import { AuthComponent } from "./auth.component";
 import { RegisterComponent } from "./pages/register/register.component";
 import { MatCardModule } from "@angular/material/card";
@@ -17,7 +17,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { SharedModule } from "@app/shared/shared.module";
 
 @NgModule({
-  declarations: [LoginComponent, CardComponent, AuthComponent, RegisterComponent],
+  declarations: [LoginComponent, AuthCardComponent, AuthComponent, RegisterComponent],
   imports: [
     CommonModule,
     AuthRoutingModule,
