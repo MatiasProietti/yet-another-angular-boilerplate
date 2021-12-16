@@ -1,0 +1,90 @@
+<form [formGroup]="form" (ngSubmit)="this.onSubmit()">
+  <div class="row" *ngFor="let field of this.fieldGroup.fields">
+    <mat-form-field appearance="outline" *ngIf="field.type === 'text'">
+      <mat-label>{{ field.displayName }}</mat-label>
+      <input matInput [type]="field.type" [formControlName]="field.name" [autocomplete]="field.autocomplete" />
+      <div class="suffix-wrapper" matSuffix *ngIf="field.icon">
+        <mat-icon>{{ field.icon }}</mat-icon>
+      </div>
+      <mat-error> {{ this.matErrorSrv.getErrorMessage(this.form.get(field.name), field.displayName) }} </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" *ngIf="field.type === 'password'">
+      <mat-label>{{ field.displayName }}</mat-label>
+      <input
+        matInput
+        [type]="this.revealPassword ? 'text' : 'password'"
+        [formControlName]="field.name"
+        [autocomplete]="field.autocomplete" />
+
+      <div class="suffix-wrapper" matSuffix>
+        <mat-icon *ngIf="!this.form.get(field.name)?.value && field.icon; else icon_show">{{ field.icon }}</mat-icon>
+      </div>
+
+      <ng-template #icon_show>
+        <button mat-icon-button matSuffix (click)="toggleRevealPassword()">
+          <mat-icon>{{ this.revealPassword ? "visibility" : "visibility_off" }}</mat-icon>
+        </button>
+      </ng-template>
+
+      <mat-error> {{ this.matErrorSrv.getErrorMessage(this.form.get(field.name), field.displayName) }} </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="row justify-content-between" *ngIf="this.termsOfService">
+    <mat-checkbox color="primary" formControlName="termsOfService">
+      <span>I read and accept the </span><a href="/terms-service" target="_blank">Terms of Service</a><span> and </span>
+      <a href="/privacy-policy" target="_blank">Privacy Policy</a>
+    </mat-checkbox>
+  </div>
+
+  <div class="row justify-content-between" *ngIf="this.rememberMe">
+    <div class="col-auto">
+      <mat-checkbox color="primary" formControlName="rememberMe">Remember me</mat-checkbox>
+    </div>
+    <div class="col-auto">
+      <a routerLink="/auth/forgot-password">Forgot password?</a>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <button mat-raised-button color="primary" class="submit-button" type="submit" [disabled]="!this.form.valid">
+        {{ this.btnText }}
+      </button>
+    </div>
+  </div>
+
+  <ng-container *ngIf="this.integration">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <app-divider color="#e2e8f0"><span>Or continue with</span></app-divider>
+      </div>
+    </div>
+
+    <div class="row justify-content-between">
+      <div class="col-4">
+        <button mat-stroked-button class="submit-button" type="button">
+          <mat-icon svgIcon="brands:github" style="color: #171515"></mat-icon>
+        </button>
+      </div>
+
+      <div class="col-4">
+        <button mat-stroked-button class="submit-button" type="button">
+          <mat-icon svgIcon="brands:discord" style="color: #5865f2"></mat-icon>
+        </button>
+      </div>
+
+      <div class="col-4">
+        <button mat-stroked-button class="submit-button" type="button">
+          <mat-icon svgIcon="brands:google-color"></mat-icon>
+        </button>
+      </div>
+    </div>
+  </ng-container>
+</form>
+
+<!--
+  @todo: implement auth0
+  @todo: implement recaptcha
+-->

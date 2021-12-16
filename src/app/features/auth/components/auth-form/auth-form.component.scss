@@ -1,0 +1,32 @@
+form {
+  margin-top: 32px;
+}
+
+.suffix-wrapper {
+  width: 2.5em;
+  height: 2.5em;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+mat-form-field {
+  margin-bottom: 10px;
+}
+
+.submit-button {
+  width: 100%;
+  border-radius: 99999px;
+  margin-top: 22px;
+  margin-bottom: 22px;
+  height: 46px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+app-divider {
+  span {
+    color: #64748b;
+  }
+}

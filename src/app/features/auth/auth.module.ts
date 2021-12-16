@@ -15,9 +15,10 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatDividerModule } from "@angular/material/divider";
 import { ReactiveFormsModule } from "@angular/forms";
 import { SharedModule } from "@app/shared/shared.module";
+import { AuthFormComponent } from "./components/auth-form/auth-form.component";
 
 @NgModule({
-  declarations: [LoginComponent, AuthCardComponent, AuthComponent, RegisterComponent],
+  declarations: [LoginComponent, AuthCardComponent, AuthComponent, RegisterComponent, AuthFormComponent],
   imports: [
     CommonModule,
     AuthRoutingModule,
