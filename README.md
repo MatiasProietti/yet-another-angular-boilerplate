@@ -10,7 +10,7 @@
 - [x] Add and configure Angular Material and bootstrap
 - [ ] Authentication
   - [x] Login
-  - [ ] Register
+  - [x] Register
   - [ ] Forgot Password
   - [ ] Reset Password
   - [ ] Confirm Email

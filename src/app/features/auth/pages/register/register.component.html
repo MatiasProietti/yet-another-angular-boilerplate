@@ -1,1 +1,21 @@
-<p>register works!</p>
+<div class="col-12">
+  <div class="row">
+    <div class="col-auto mat-display-1">Register</div>
+  </div>
+
+  <div class="row">
+    <div class="body-2">Already have an account? <a routerLink="/auth/login">Log in</a></div>
+  </div>
+
+  <app-auth-form
+    btnText="Register"
+    [fieldGroup]="this.fieldGroup"
+    [termsOfService]="true"
+    [integration]="true"
+    (formSubmit)="this.onSubmit($event)"></app-auth-form>
+</div>
+
+<!--
+  @todo: implement auth0
+  @todo: implement recaptcha
+-->
