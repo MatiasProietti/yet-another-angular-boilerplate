@@ -19,8 +19,10 @@
   - [ ] Service
   - [ ] Auth Guard
   - [ ] Model
+  - [ ] Responsive
 - [ ] Add fake/mock backend
 - [ ] Optimize assets
+- [ ] Tests
 
 ## Project Structure
 
