@@ -9,7 +9,6 @@ import { Validators } from "@app/shared/validators/validators";
   styleUrls: ["./login.component.scss"],
 })
 export class LoginComponent {
-  public revealPassword = false;
   public fieldGroup = new FieldGroup([
     {
       name: "username",
