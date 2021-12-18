@@ -6,6 +6,7 @@ import { ForgotPasswordComponent } from "./pages/forgot-password/forgot-password
 import { LoginComponent } from "./pages/login/login.component";
 import { PendingConfirmationComponent } from "./pages/pending-confirmation/pending-confirmation.component";
 import { RegisterComponent } from "./pages/register/register.component";
+import { ResendEmailComponent } from "./pages/resend-email/resend-email.component";
 import { ResetPasswordComponent } from "./pages/reset-password/reset-password.component";
 
 const routes: Routes = [
@@ -36,6 +37,10 @@ const routes: Routes = [
       {
         path: "pending-confirmation",
         component: PendingConfirmationComponent,
+      },
+      {
+        path: "resend-email",
+        component: ResendEmailComponent,
       },
       {
         path: "**",

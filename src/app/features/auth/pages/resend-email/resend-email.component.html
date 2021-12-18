@@ -1,0 +1,5 @@
+<app-auth-card>
+  <span slot="title">Resend Email</span>
+  <span slot="subtitle">Already confirmed your account? <a routerLink="/auth/login">Log in</a></span>
+  <app-auth-form btnText="Resend email" [fieldGroup]="this.fieldGroup" (formSubmit)="this.onSubmit($event)"></app-auth-form>
+</app-auth-card>
