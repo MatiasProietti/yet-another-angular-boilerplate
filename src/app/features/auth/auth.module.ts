@@ -21,6 +21,7 @@ import { ConfirmEmailComponent } from "./pages/confirm-email/confirm-email.compo
 import { SharedComponentsModule } from "@app/shared/components/shared.components.module";
 import { PendingConfirmationComponent } from './pages/pending-confirmation/pending-confirmation.component';
 import { ResendEmailComponent } from './pages/resend-email/resend-email.component';
+import { ChangePasswordComponent } from './pages/change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ResendEmailComponent } from './pages/resend-email/resend-email.componen
     ConfirmEmailComponent,
     PendingConfirmationComponent,
     ResendEmailComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     CommonModule,

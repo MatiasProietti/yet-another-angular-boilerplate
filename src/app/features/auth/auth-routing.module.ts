@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { AuthComponent } from "./auth.component";
+import { ChangePasswordComponent } from "./pages/change-password/change-password.component";
 import { ConfirmEmailComponent } from "./pages/confirm-email/confirm-email.component";
 import { ForgotPasswordComponent } from "./pages/forgot-password/forgot-password.component";
 import { LoginComponent } from "./pages/login/login.component";
@@ -41,6 +42,10 @@ const routes: Routes = [
       {
         path: "resend-email",
         component: ResendEmailComponent,
+      },
+      {
+        path: "change-password",
+        component: ChangePasswordComponent,
       },
       {
         path: "**",
