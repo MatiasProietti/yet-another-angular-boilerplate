@@ -51,3 +51,8 @@
 ```
 
 Optional folders might be added in the future if needed. For example: `constants`, `pipes`, `decorators`, `directives`, `interfaces`.
+
+## Why only 1 branch?
+
+I'm Currently working on the first version of this project. As I'm working alone and there isn't a released version I didn't find it useful to use different branches.
+After finishing with the Auth part I will start working with feature branches.
