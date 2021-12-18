@@ -12,7 +12,7 @@
   - [x] Login
   - [x] Register
   - [x] Forgot Password
-  - [ ] Reset Password
+  - [x] Reset Password
   - [ ] Confirm Email
   - [ ] Pending Confirmation
   - [ ] Logout
