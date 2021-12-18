@@ -15,7 +15,7 @@
   - [x] Reset Password
   - [x] Confirm Email
   - [x] Pending Confirmation
-  - [ ] Resend Email
+  - [x] Resend Email
   - [ ] Logout
   - [ ] Service
   - [ ] Auth Guard
