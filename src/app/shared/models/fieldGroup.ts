@@ -8,6 +8,7 @@ export interface IField {
   icon?: string;
   validators?: ValidationErrors[];
   defaultValue?: string;
+  hidden?: boolean;
 }
 
 export class FieldGroup {

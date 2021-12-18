@@ -1,5 +1,5 @@
 <form [formGroup]="form" (ngSubmit)="this.onSubmit()">
-  <div class="row" *ngFor="let field of this.fieldGroup.fields">
+  <div class="row" *ngFor="let field of this.fieldGroup.fields" [ngClass]="field.hidden ? 'hidden' : ''">
     <mat-form-field appearance="outline" *ngIf="field.type === 'text'">
       <mat-label>{{ field.displayName }}</mat-label>
       <input matInput [type]="field.type" [formControlName]="field.name" [autocomplete]="field.autocomplete" />
