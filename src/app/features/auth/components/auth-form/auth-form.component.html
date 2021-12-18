@@ -31,14 +31,14 @@
     </mat-form-field>
   </div>
 
-  <div class="row justify-content-between" *ngIf="this.termsOfService">
+  <div class="row justify-content-between tos" *ngIf="this.termsOfService">
     <mat-checkbox color="primary" formControlName="termsOfService">
       <span>I read and accept the </span><a href="/terms-service" target="_blank">Terms of Service</a><span> and </span>
       <a href="/privacy-policy" target="_blank">Privacy Policy</a>
     </mat-checkbox>
   </div>
 
-  <div class="row justify-content-between" *ngIf="this.rememberMe">
+  <div class="row justify-content-between remember-me" *ngIf="this.rememberMe">
     <div class="col-auto">
       <mat-checkbox color="primary" formControlName="rememberMe">Remember me</mat-checkbox>
     </div>
@@ -56,7 +56,7 @@
   </div>
 
   <ng-container *ngIf="this.integration">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center integration">
       <div class="col-12">
         <app-divider color="#e2e8f0"><span>Or continue with</span></app-divider>
       </div>
