@@ -13,13 +13,14 @@
   - [x] Register
   - [x] Forgot Password
   - [x] Reset Password
-  - [ ] Confirm Email
+  - [x] Confirm Email
   - [ ] Pending Confirmation
   - [ ] Logout
   - [ ] Service
   - [ ] Auth Guard
   - [ ] Model
   - [ ] Responsive
+  - [ ] Password Entropy
 - [ ] Add fake/mock backend
 - [ ] Optimize assets
 - [ ] Tests
