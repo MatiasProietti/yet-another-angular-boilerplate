@@ -18,9 +18,10 @@ import { SharedModule } from "@app/shared/shared.module";
 import { AuthFormComponent } from "./components/auth-form/auth-form.component";
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
+import { ConfirmEmailComponent } from './pages/confirm-email/confirm-email.component';
 
 @NgModule({
-  declarations: [LoginComponent, AuthCardComponent, AuthComponent, RegisterComponent, AuthFormComponent, ForgotPasswordComponent, ResetPasswordComponent],
+  declarations: [LoginComponent, AuthCardComponent, AuthComponent, RegisterComponent, AuthFormComponent, ForgotPasswordComponent, ResetPasswordComponent, ConfirmEmailComponent],
   imports: [
     CommonModule,
     AuthRoutingModule,

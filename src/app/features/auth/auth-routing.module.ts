@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { AuthComponent } from "./auth.component";
+import { ConfirmEmailComponent } from "./pages/confirm-email/confirm-email.component";
 import { ForgotPasswordComponent } from "./pages/forgot-password/forgot-password.component";
 import { LoginComponent } from "./pages/login/login.component";
 import { RegisterComponent } from "./pages/register/register.component";
@@ -26,6 +27,10 @@ const routes: Routes = [
       {
         path: "reset-password",
         component: ResetPasswordComponent,
+      },
+      {
+        path: "confirm-email",
+        component: ConfirmEmailComponent,
       },
       {
         path: "**",

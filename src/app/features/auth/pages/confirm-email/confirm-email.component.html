@@ -1,0 +1,11 @@
+<div class="col-12">
+  <div class="row">
+    <div class="col-auto mat-display-1">Confirm Email</div>
+  </div>
+
+  <div class="row">
+    <div class="mat-body-2">Press the button to confirm your email</div>
+  </div>
+
+  <app-auth-form btnText="Confirm email" [fieldGroup]="this.fieldGroup" (formSubmit)="this.onSubmit($event)"></app-auth-form>
+</div>
