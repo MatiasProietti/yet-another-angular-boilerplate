@@ -19,6 +19,7 @@ import { ForgotPasswordComponent } from "./pages/forgot-password/forgot-password
 import { ResetPasswordComponent } from "./pages/reset-password/reset-password.component";
 import { ConfirmEmailComponent } from "./pages/confirm-email/confirm-email.component";
 import { SharedComponentsModule } from "@app/shared/components/shared.components.module";
+import { PendingConfirmationComponent } from './pages/pending-confirmation/pending-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { SharedComponentsModule } from "@app/shared/components/shared.components
     ForgotPasswordComponent,
     ResetPasswordComponent,
     ConfirmEmailComponent,
+    PendingConfirmationComponent,
   ],
   imports: [
     CommonModule,
