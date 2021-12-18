@@ -4,6 +4,14 @@
   </div>
 
   <div class="row">
+    <div class="col-auto mat-display-1"><ng-content select="[slot=title]"></ng-content></div>
+  </div>
+
+  <div class="row">
+    <div class="col-auto mat-body-2"><ng-content select="[slot=subtitle]"></ng-content></div>
+  </div>
+
+  <div class="row">
     <ng-content></ng-content>
   </div>
 </mat-card>

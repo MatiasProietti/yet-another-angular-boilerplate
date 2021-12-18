@@ -1,19 +1,13 @@
-<div class="col-12">
-  <div class="row">
-    <div class="col-auto mat-display-1">Log in</div>
-  </div>
-
-  <div class="row">
-    <div class="mat-body-2">Don't have an account? <a routerLink="/auth/register">Register</a></div>
-  </div>
-
+<app-auth-card>
+  <span slot="title">Log in</span>
+  <span slot="subtitle">Don't have an account? <a routerLink="/auth/register">Register</a></span>
   <app-auth-form
     btnText="Log in"
     [fieldGroup]="this.fieldGroup"
     [rememberMe]="true"
     [integration]="true"
     (formSubmit)="this.onSubmit($event)"></app-auth-form>
-</div>
+</app-auth-card>
 
 <!--
   @todo: implement auth0
