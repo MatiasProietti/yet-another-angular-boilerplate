@@ -14,14 +14,23 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatIconModule } from "@angular/material/icon";
 import { MatDividerModule } from "@angular/material/divider";
 import { ReactiveFormsModule } from "@angular/forms";
-import { SharedModule } from "@app/shared/shared.module";
 import { AuthFormComponent } from "./components/auth-form/auth-form.component";
-import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
-import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
-import { ConfirmEmailComponent } from './pages/confirm-email/confirm-email.component';
+import { ForgotPasswordComponent } from "./pages/forgot-password/forgot-password.component";
+import { ResetPasswordComponent } from "./pages/reset-password/reset-password.component";
+import { ConfirmEmailComponent } from "./pages/confirm-email/confirm-email.component";
+import { SharedComponentsModule } from "@app/shared/components/shared.components.module";
 
 @NgModule({
-  declarations: [LoginComponent, AuthCardComponent, AuthComponent, RegisterComponent, AuthFormComponent, ForgotPasswordComponent, ResetPasswordComponent, ConfirmEmailComponent],
+  declarations: [
+    LoginComponent,
+    AuthCardComponent,
+    AuthComponent,
+    RegisterComponent,
+    AuthFormComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent,
+    ConfirmEmailComponent,
+  ],
   imports: [
     CommonModule,
     AuthRoutingModule,
@@ -33,7 +42,7 @@ import { ConfirmEmailComponent } from './pages/confirm-email/confirm-email.compo
     MatCheckboxModule,
     MatIconModule,
     MatDividerModule,
-    SharedModule,
+    SharedComponentsModule,
   ],
 })
 export class AuthModule {}
