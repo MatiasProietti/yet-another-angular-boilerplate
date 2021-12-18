@@ -16,9 +16,10 @@ import { MatDividerModule } from "@angular/material/divider";
 import { ReactiveFormsModule } from "@angular/forms";
 import { SharedModule } from "@app/shared/shared.module";
 import { AuthFormComponent } from "./components/auth-form/auth-form.component";
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 
 @NgModule({
-  declarations: [LoginComponent, AuthCardComponent, AuthComponent, RegisterComponent, AuthFormComponent],
+  declarations: [LoginComponent, AuthCardComponent, AuthComponent, RegisterComponent, AuthFormComponent, ForgotPasswordComponent],
   imports: [
     CommonModule,
     AuthRoutingModule,
