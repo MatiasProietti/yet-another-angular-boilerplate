@@ -11,7 +11,7 @@
 - [ ] Authentication
   - [x] Login
   - [x] Register
-  - [ ] Forgot Password
+  - [x] Forgot Password
   - [ ] Reset Password
   - [ ] Confirm Email
   - [ ] Pending Confirmation
