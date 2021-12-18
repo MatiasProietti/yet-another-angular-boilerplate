@@ -5,7 +5,6 @@ import { FieldGroup } from "@app/shared/models/fieldGroup";
 import { FormValue } from "@app/shared/models/formValue";
 import { MatErrorService } from "@app/shared/services/mat-error-service";
 import { Validators } from "@app/shared/validators/validators";
-import { take } from "rxjs";
 
 @Component({
   selector: "app-auth-form",
@@ -38,16 +37,6 @@ export class AuthFormComponent implements OnInit {
 
     if (this.form.get("password") && this.form.get("confirmPassword"))
       this.form.get("password")?.valueChanges.subscribe(() => this.form.get("confirmPassword")?.updateValueAndValidity());
-
-    /** workaround for browser autofill
-     * the form doesn't update the value and validity when filled by the browser
-     * (depending on the browser) the first value of the subscription might be a null or incomplete value
-     * Tested with Chrome and Firefox
-     */
-    this.form.valueChanges.pipe(take(2)).subscribe((value) => {
-      console.log(value);
-      this.form.markAllAsTouched();
-    });
   }
 
   public toggleRevealPassword(): void {
@@ -55,6 +44,10 @@ export class AuthFormComponent implements OnInit {
   }
 
   public onSubmit(): void {
+    // In some cases the errors are not shown when checking the validity of the form
+    // this method will trigger the validity check
+    this.form.markAllAsTouched();
+
     if (this.form.invalid) return;
     this.formSubmit.emit(this.form.value as FormValue);
   }
