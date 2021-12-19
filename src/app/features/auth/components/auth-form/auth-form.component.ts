@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from "@angular/forms";
 
 import { FieldGroup } from "@app/shared/models/fieldGroup";
 import { FormValue } from "@app/shared/models/formValue";
-import { MatErrorService } from "@app/shared/services/mat-error-service";
+import { MatErrorService } from "@app/shared/services/mat-error.service";
 import { Validators } from "@app/shared/validators/validators";
 
 @Component({
@@ -52,3 +52,5 @@ export class AuthFormComponent implements OnInit {
     this.formSubmit.emit(this.form.value as FormValue);
   }
 }
+
+//@todo: add loading spinner on button
