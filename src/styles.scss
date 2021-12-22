@@ -40,6 +40,13 @@ body {
   --text-primary-darker-color: #{$light-primary-text};
 }
 
+mat-checkbox.invalid {
+  color: var(--warn-color);
+  .mat-checkbox-frame {
+    border-color: var(--warn-color) !important;
+  }
+}
+
 .light-theme {
   @include mat.all-component-themes($lightTheme);
   --background-gradient-color: #ffffff1a;

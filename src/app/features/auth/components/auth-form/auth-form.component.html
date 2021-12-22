@@ -32,7 +32,10 @@
   </div>
 
   <div class="row justify-content-between tos" *ngIf="this.termsOfService">
-    <mat-checkbox color="primary" formControlName="termsOfService">
+    <mat-checkbox
+      color="primary"
+      formControlName="termsOfService"
+      [ngClass]="this.form.get('termsOfService')?.invalid && this.form.get('termsOfService')?.touched ? 'invalid' : ''">
       <span>I read and accept the </span><a href="/terms-service" target="_blank">Terms of Service</a><span> and </span>
       <a href="/privacy-policy" target="_blank">Privacy Policy</a>
     </mat-checkbox>
