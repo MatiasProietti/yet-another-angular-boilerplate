@@ -17,15 +17,16 @@
   - [x] Pending Confirmation
   - [x] Resend Email
   - [x] Change Password
-  - [ ] Logout
-  - [ ] Service
-  - [ ] Auth Guard
-  - [ ] Model
+  - [x] Service
+  - [x] Auth Guard
+  - [x] Model
   - [ ] Responsive
   - [ ] Password Entropy
 - [ ] Add fake/mock backend
 - [ ] Optimize assets
 - [ ] Tests
+- [ ] Loading spinner
+- [ ] Error pages (404, 500, etc.)
 
 ## Project Structure
 
