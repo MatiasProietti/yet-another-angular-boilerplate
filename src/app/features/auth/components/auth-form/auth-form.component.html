@@ -2,7 +2,7 @@
   <div class="row" *ngFor="let field of this.fieldGroup.fields" [ngClass]="field.hidden ? 'hidden' : ''">
     <mat-form-field appearance="outline" *ngIf="field.type === 'text'">
       <mat-label>{{ field.displayName }}</mat-label>
-      <input matInput [type]="field.type" [formControlName]="field.name" [autocomplete]="field.autocomplete" />
+      <input matInput [type]="field.type" [formControlName]="field.name" [autocomplete]="field.autocomplete" [id]="field.name" />
       <div class="suffix-wrapper" matSuffix *ngIf="field.icon">
         <mat-icon>{{ field.icon }}</mat-icon>
       </div>
@@ -15,14 +15,15 @@
         matInput
         [type]="this.revealPassword ? 'text' : 'password'"
         [formControlName]="field.name"
-        [autocomplete]="field.autocomplete" />
+        [autocomplete]="field.autocomplete"
+        [id]="field.name" />
 
       <div class="suffix-wrapper" matSuffix>
         <mat-icon *ngIf="!this.form.get(field.name)?.value && field.icon; else icon_show">{{ field.icon }}</mat-icon>
       </div>
 
       <ng-template #icon_show>
-        <button mat-icon-button matSuffix (click)="toggleRevealPassword()">
+        <button mat-icon-button matSuffix (click)="toggleRevealPassword()" type="button">
           <mat-icon>{{ this.revealPassword ? "visibility" : "visibility_off" }}</mat-icon>
         </button>
       </ng-template>
