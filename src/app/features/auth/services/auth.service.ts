@@ -9,11 +9,11 @@ import jwt_decode from "jwt-decode";
 export class AuthService {
   constructor(private repoSrv: AuthRepositoryService) {}
 
-  public login(username: string, password: string): Observable<{ token: string }> {
+  public login(username: string, password: string, remember?: boolean): Observable<{ token: string }> {
     const res = this.repoSrv.login({ username, password }).pipe(share());
 
     res.pipe(take(1)).subscribe((answer) => {
-      this.saveToken(answer.token);
+      this.saveToken(answer.token, remember);
     });
 
     return res;
@@ -32,7 +32,13 @@ export class AuthService {
   }
 
   public changePassword<T>(oldPassword: string, newPassword: string): Observable<T> {
-    return this.repoSrv.changePassword({ old_password: oldPassword, new_password: newPassword });
+    const res = this.repoSrv.changePassword<T>({ old_password: oldPassword, new_password: newPassword }).pipe(share());
+
+    res.pipe(take(1)).subscribe(() => {
+      this.removeToken();
+    });
+
+    return res;
   }
 
   public confirmEmail<T>(id: number, hash: string, expires: string, signature: string): Observable<T> {
@@ -50,16 +56,23 @@ export class AuthService {
   }
 
   public isAuthenticated(): boolean {
-    return !!localStorage.getItem("token");
+    return !!(localStorage.getItem("token") || sessionStorage.getItem("token"));
   }
 
   private removeToken(): void {
     localStorage.removeItem("token");
     localStorage.removeItem("decodedToken");
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("decodedToken");
   }
 
-  private saveToken(token: string): void {
-    localStorage.setItem("token", token);
-    localStorage.setItem("decodedToken", JSON.stringify(jwt_decode(token)));
+  private saveToken(token: string, remember?: boolean): void {
+    if (remember) {
+      localStorage.setItem("token", token);
+      localStorage.setItem("decodedToken", JSON.stringify(jwt_decode(token)));
+    } else {
+      sessionStorage.setItem("token", token);
+      sessionStorage.setItem("decodedToken", JSON.stringify(jwt_decode(token)));
+    }
   }
 }
