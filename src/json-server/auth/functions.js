@@ -17,7 +17,10 @@ var functions = function (jwt, CONFIG) {
       try {
         user = db.get("users").insert({ email, username, password, verified: false }).write();
         db.get("verify_urls")
-          .insert({ user_id: user.id, url: `/auth/confirm-email/${user.id}/testHash123?expires=never&signature=testSignature123` })
+          .insert({
+            user_id: user.id,
+            url: `/auth/confirm-email?id=${user.id}&hash=testHash123&expires=never&signature=testSignature123`,
+          })
           .write();
       } catch (err) {
         throw Error('You must add a "users" and "verify_urls" collection to your db');
@@ -187,7 +190,7 @@ var functions = function (jwt, CONFIG) {
         return;
       }
 
-      const url = `/auth/confirm-email/${user.id}/testHash123?expires=never&signature=testSignature123`;
+      const url = `/auth/confirm-email?id=${user.id}&hash=testHash123&expires=never&signature=testSignature123`;
 
       try {
         db.get("verify_urls").insert({ user_id: user.id, url }).write();
