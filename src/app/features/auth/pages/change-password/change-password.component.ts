@@ -12,6 +12,15 @@ import { AuthService } from "../../services/auth.service";
 })
 export class ChangePasswordComponent {
   public fieldGroup = new FieldGroup([
+    //fake username input needed to trigger chrome's password suggestion
+    {
+      name: "username",
+      displayName: "Username",
+      type: "text",
+      icon: "account_box",
+      hidden: true,
+      autocomplete: "username",
+    },
     {
       name: "oldPassword",
       displayName: "Current Password",
