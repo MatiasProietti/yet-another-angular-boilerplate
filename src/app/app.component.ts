@@ -14,6 +14,7 @@ export class AppComponent {
   constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer, public themeSrv: ThemeService) {
     /* 
     Using this resolver we remove the need to register each icon we want to use.
+    the possible namespaces are: "brands", "solid" and "regular"
     */
     this.matIconRegistry.addSvgIconResolver((name: string, namespace: string): SafeResourceUrl => {
       const route = namespace ? `/assets/icons/${namespace}/${name}.svg` : `/assets/icons/${name}.svg`;
