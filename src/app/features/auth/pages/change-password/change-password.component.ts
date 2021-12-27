@@ -1,7 +1,9 @@
 import { Component } from "@angular/core";
+import { Router } from "@angular/router";
 import { FieldGroup } from "@app/shared/models/fieldGroup";
 import { FormValue } from "@app/shared/models/formValue";
 import { Validators } from "@app/shared/validators/validators";
+import { AuthService } from "../../services/auth.service";
 
 @Component({
   selector: "app-change-password",
@@ -35,9 +37,14 @@ export class ChangePasswordComponent {
       validators: [Validators.controlsMatch("newPassword", "confirmPassword"), Validators.required],
     },
   ]);
-  constructor() {}
+  constructor(private authSrv: AuthService, private router: Router) {}
 
   public onSubmit($event: FormValue): void {
-    console.log($event);
+    this.authSrv.changePassword($event["oldPassword"] as string, $event["newPassword"] as string).subscribe(() => {
+      alert("password changed!");
+      void this.router.navigateByUrl("/auth/login");
+    });
   }
 }
+
+//@todo: add default username from accountSrv

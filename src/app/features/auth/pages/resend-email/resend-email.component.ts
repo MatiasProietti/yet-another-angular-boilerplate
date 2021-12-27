@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { FieldGroup } from "@app/shared/models/fieldGroup";
 import { FormValue } from "@app/shared/models/formValue";
 import { Validators } from "@app/shared/validators/validators";
+import { AuthService } from "../../services/auth.service";
 
 @Component({
   selector: "app-resend-email",
@@ -20,9 +21,11 @@ export class ResendEmailComponent {
     },
   ]);
 
-  constructor() {}
+  constructor(private authSrv: AuthService) {}
 
   public onSubmit($event: FormValue): void {
-    console.log($event);
+    this.authSrv.resendEmail($event["email"] as string).subscribe(() => {
+      alert("email re-sent");
+    });
   }
 }

@@ -1,7 +1,9 @@
 import { Component } from "@angular/core";
+import { Router } from "@angular/router";
 import { FieldGroup } from "@app/shared/models/fieldGroup";
 import { FormValue } from "@app/shared/models/formValue";
 import { Validators } from "@app/shared/validators/validators";
+import { AuthService } from "../../services/auth.service";
 
 @Component({
   selector: "app-register",
@@ -44,9 +46,11 @@ export class RegisterComponent {
     },
   ]);
 
-  constructor() {}
+  constructor(private authSrv: AuthService, private router: Router) {}
 
   public onSubmit($event: FormValue): void {
-    console.log($event);
+    this.authSrv.register($event["username"] as string, $event["email"] as string, $event["password"] as string).subscribe(() => {
+      void this.router.navigateByUrl("/auth/pending-confirmation");
+    });
   }
 }

@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { FieldGroup } from "@app/shared/models/fieldGroup";
 import { FormValue } from "@app/shared/models/formValue";
 import { Validators } from "@app/shared/validators/validators";
+import { AuthService } from "../../services/auth.service";
 
 @Component({
   selector: "app-auth-login",
@@ -27,9 +28,11 @@ export class LoginComponent {
       validators: [Validators.required],
     },
   ]);
-  constructor() {}
+  constructor(private authSrv: AuthService) {}
 
   public onSubmit($event: FormValue): void {
-    console.log($event);
+    this.authSrv.login($event["username"] as string, $event["password"] as string, $event["rememberMe"] as boolean).subscribe(() => {
+      alert("logged in!");
+    });
   }
 }
