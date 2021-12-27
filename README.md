@@ -27,6 +27,9 @@
 - [ ] Tests
 - [ ] Loading spinner
 - [ ] Error pages (404, 500, etc.)
+- [ ] Unsubscribe onDestroy
+- [ ] Tooltips
+- [ ] Notifications
 
 ## Project Structure
 
@@ -57,5 +60,5 @@ Optional folders might be added in the future if needed. For example: `constants
 
 ## Why only 1 branch?
 
-I'm Currently working on the first version of this project. As I'm working alone and there isn't a released version I didn't find it useful to use different branches.
-After finishing with the Auth part I will start working with feature branches.
+I'm currently working on the first feature of this project. As I'm working alone and there isn't a working feature yet I didn't find it useful to use an empty main branch with a separated feature branch for the auth part.
+After finishing with the Auth feature I will start working with feature branches.
