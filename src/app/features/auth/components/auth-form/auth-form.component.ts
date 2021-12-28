@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 
-import { FieldGroup } from "@app/shared/models/fieldGroup";
-import { FormValue } from "@app/shared/models/formValue";
+import { FieldGroup } from "@app/shared/models/field-group";
+import { FormValue } from "@app/shared/models/form-value";
 import { MatErrorService } from "@app/shared/services/mat-error.service";
 import { Validators } from "@app/shared/validators/validators";
 
