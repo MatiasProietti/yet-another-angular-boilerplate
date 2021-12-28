@@ -10,8 +10,7 @@ var functions = function (jwt, CONFIG) {
       var user = db.get("users").find({ username }).value() || db.get("users").find({ email }).value();
 
       if (user) {
-        res.status(409).jsonp("Username and/or email already in use");
-        return;
+        return res.status(409).jsonp({ code: 409, message: "Username and/or email already in use" });
       }
 
       try {
@@ -26,7 +25,7 @@ var functions = function (jwt, CONFIG) {
         throw Error('You must add a "users" and "verify_urls" collection to your db');
       }
 
-      res.status(201).jsonp();
+      return res.status(201).jsonp();
     },
 
     login(req, res) {
@@ -39,21 +38,19 @@ var functions = function (jwt, CONFIG) {
       const user = db.get("users").find({ username, password }).value();
 
       if (!user) {
-        res.status(404).jsonp("Wrong username and/or password");
-        return;
+        return res.status(404).jsonp({ code: 404, message: "Wrong username and/or password" });
       }
 
       if (!user.verified) {
-        res.status(403).jsonp("User is not verified");
-        return;
+        return res.status(403).jsonp({ code: 403, message: "User is not verified" });
       }
 
       token = jwt.sign({ username: user.username, email: user.email }, CONFIG.JWT_SECRET_KEY, {
         expiresIn: CONFIG.JWT_EXPIRES_IN,
         subject: String(user.id),
       });
-      if (token) res.status(200).jsonp({ token });
-      else res.status(500).jsonp("Something went wrong");
+      if (token) return res.status(200).jsonp({ token });
+      else return res.status(500).jsonp({ code: 500, message: "Something went wrong" });
     },
 
     forgotPassword(req, res) {
@@ -66,13 +63,11 @@ var functions = function (jwt, CONFIG) {
       const user = db.get("users").find({ email }).value();
 
       if (!user) {
-        res.status(404).jsonp("Wrong email");
-        return;
+        return res.status(404).jsonp({ code: 404, message: "Wrong email" });
       }
 
       if (!user.verified) {
-        res.status(403).jsonp("User is not verified");
-        return;
+        return res.status(403).jsonp({ code: 403, message: "User is not verified" });
       }
 
       const token = "testToken1234";
@@ -84,7 +79,7 @@ var functions = function (jwt, CONFIG) {
       } catch (err) {
         throw Error('You must add a "reset_tokens" collection to your db');
       }
-      res.status(200).jsonp();
+      return res.status(200).jsonp();
     },
 
     resetPassword(req, res) {
@@ -98,13 +93,11 @@ var functions = function (jwt, CONFIG) {
       const reset_token = db.get("reset_tokens").find({ token }).value();
 
       if (!reset_token) {
-        res.status(404).jsonp("Token not found");
-        return;
+        return res.status(404).jsonp({ code: 404, message: "Token not found" });
       }
 
       if (!user.verified) {
-        res.status(403).jsonp("User is not verified");
-        return;
+        return res.status(403).jsonp({ code: 403, message: "User is not verified" });
       }
 
       try {
@@ -113,17 +106,20 @@ var functions = function (jwt, CONFIG) {
       } catch (err) {
         throw Error('You must add a "forgotPassword" collection to your db');
       }
-      res.status(200).jsonp();
+      return res.status(200).jsonp();
     },
 
     changePassword(req, res) {
       const { old_password, new_password } = req.body;
-      const jwtHeader = req.headers["authorization"].replace("Bearer ", "");
+      const jwtHeader = req.headers["authorization"]?.replace("Bearer ", "");
+      if (!jwtHeader) return res.status(401).jsonp({ code: 401, message: "Invalid JWT" });
       try {
         var claims = jwt.verify(jwtHeader, CONFIG.JWT_SECRET_KEY);
       } catch (err) {
-        res.status(401).jsonp();
+        return res.status(401).jsonp({ code: 401, message: "Invalid JWT" });
       }
+
+      if (!claims) return res.status(401).jsonp({ code: 401, message: "Invalid JWT" });
 
       const { db } = req.app;
       if (db == null) {
@@ -133,8 +129,7 @@ var functions = function (jwt, CONFIG) {
       const user = db.get("users").find({ id: Number(claims.sub), password: old_password });
 
       if (!user.value()) {
-        res.status(404).jsonp("Token not found");
-        return;
+        return res.status(404).jsonp({ code: 404, message: "Token not found" });
       }
 
       try {
@@ -142,7 +137,7 @@ var functions = function (jwt, CONFIG) {
       } catch (err) {
         throw Error('You must add a "users" collection to your db');
       }
-      res.status(200).jsonp();
+      return res.status(200).jsonp();
     },
 
     confirmEmail(req, res) {
@@ -157,8 +152,7 @@ var functions = function (jwt, CONFIG) {
         .value();
 
       if (!verify_url) {
-        res.status(404).jsonp("Token not found");
-        return;
+        return res.status(404).jsonp({ code: 404, message: "Token not found" });
       }
 
       try {
@@ -168,7 +162,7 @@ var functions = function (jwt, CONFIG) {
       } catch (err) {
         throw Error('You must add a "users" collection to your db');
       }
-      res.status(200).jsonp();
+      return res.status(200).jsonp();
     },
 
     resendEmail(req, res) {
@@ -181,13 +175,11 @@ var functions = function (jwt, CONFIG) {
       const user = db.get("users").find({ email }).value();
 
       if (!user) {
-        res.status(404).jsonp("Email not found");
-        return;
+        return res.status(404).jsonp({ code: 404, message: "Email not found" });
       }
 
       if (user.verified) {
-        res.status(403).jsonp("User is already verified");
-        return;
+        return res.status(403).jsonp({ code: 403, message: "User is already verified" });
       }
 
       const url = `/auth/confirm-email?id=${user.id}&hash=testHash123&expires=never&signature=testSignature123`;
@@ -197,7 +189,7 @@ var functions = function (jwt, CONFIG) {
       } catch (err) {
         throw Error('You must add a "verify_urls" collection to your db');
       }
-      res.status(200).jsonp();
+      return res.status(200).jsonp();
     },
   };
 };
