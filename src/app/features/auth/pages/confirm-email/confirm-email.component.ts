@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { FieldGroup } from "@app/shared/models/fieldGroup";
+import { FieldGroup } from "@app/shared/models/field-group";
 import { AuthService } from "../../services/auth.service";
 
 @Component({
