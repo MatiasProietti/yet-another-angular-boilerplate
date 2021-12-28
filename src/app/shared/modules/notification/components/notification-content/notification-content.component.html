@@ -1,0 +1,23 @@
+<div class="card" [style.--notification-duration]="this.duration + 'ms'">
+  <mat-icon [ngClass]="this.type" class="icon">{{ getIcon() }}</mat-icon>
+  <div class="row justify-content-center align-items-center g-0">
+    <div class="col">
+      <div class="row justify-content-start align-items-start title">
+        <div class="col align-self-center" *ngIf="!!this.title">
+          <span class="mat-subheading-1">{{ this.title }}</span>
+        </div>
+      </div>
+      <div class="row justify-content-start align-items-start description" *ngIf="!!this.text">
+        <div class="col">
+          <span class="text">{{ this.text }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-auto button">
+      <button mat-icon-button (click)="this.dismiss()">
+        <mat-icon color="warn">close</mat-icon>
+      </button>
+    </div>
+  </div>
+  <mat-progress-bar mode="determinate" color="primary" value="0" (animationend)="this.dismiss()"></mat-progress-bar>
+</div>

@@ -1,0 +1,62 @@
+::ng-deep .card {
+  color: var(--text-color);
+  &:hover {
+    .mat-progress-bar .mat-progress-bar-fill {
+      animation-play-state: paused;
+    }
+  }
+
+  & > .row {
+    padding: 14px 16px;
+  }
+
+  .icon {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    border-radius: 100%;
+    background-color: var(--notification-background-color);
+    vertical-align: middle;
+    &.error {
+      color: #ffcccc;
+    }
+    &.success {
+      color: #4bb543;
+    }
+    &.warning {
+      color: #eed202;
+    }
+    &.info {
+      color: #1e92f4;
+    }
+  }
+
+  .description {
+    color: rgba(var(--text-color-rgb), 0.9);
+    margin-top: 10px;
+  }
+
+  .mat-progress-bar {
+    border-radius: 0px 0px 4px 4px;
+
+    .mat-progress-bar-fill {
+      transition: none !important;
+      animation: fill var(--notification-duration) linear 200ms 1 normal forwards;
+    }
+  }
+
+  .button {
+    padding-left: 16px;
+  }
+}
+
+@keyframes fill {
+  0% {
+    transform: scale3d(0, 1, 1);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+//@todo?: move colors to palette.scss

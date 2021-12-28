@@ -50,11 +50,17 @@ mat-checkbox.invalid {
 .light-theme {
   @include mat.all-component-themes($lightTheme);
   --background-gradient-color: #ffffff1a;
+  --notification-background-color: #323232;
+  --text-color: #ffffff;
+  --text-color-rgb: 255, 255, 255;
 }
 
 .dark-theme {
   @include mat.all-component-themes($darkTheme);
   --background-gradient-color: #0000001a;
+  --notification-background-color: #fafafa;
+  --text-color: #1e293b;
+  --text-color-rgb: 30, 41, 59;
 }
 
 a {
@@ -88,3 +94,11 @@ mat-checkbox {
     }
   }
 }
+
+// passed
+.app-notification-container {
+  padding: 0px !important;
+  background-color: var(--notification-background-color) !important;
+}
+
+// @todo: replace colors with variables
