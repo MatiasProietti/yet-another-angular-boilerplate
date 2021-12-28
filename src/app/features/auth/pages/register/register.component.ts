@@ -1,7 +1,10 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
+import { BackendError } from "@app/shared/models/backend-error";
 import { FieldGroup } from "@app/shared/models/field-group";
 import { FormValue } from "@app/shared/models/form-value";
+import { NotificationType } from "@app/shared/modules/notification/constants/notification-type";
+import { NotificationService } from "@app/shared/modules/notification/services/notification.service";
 import { Validators } from "@app/shared/validators/validators";
 import { AuthService } from "../../services/auth.service";
 
@@ -46,11 +49,15 @@ export class RegisterComponent {
     },
   ]);
 
-  constructor(private authSrv: AuthService, private router: Router) {}
+  constructor(private authSrv: AuthService, private router: Router, private notificationSrv: NotificationService) {}
 
   public onSubmit($event: FormValue): void {
-    this.authSrv.register($event["username"] as string, $event["email"] as string, $event["password"] as string).subscribe(() => {
-      void this.router.navigateByUrl("/auth/pending-confirmation");
+    this.authSrv.register($event["username"] as string, $event["email"] as string, $event["password"] as string).subscribe({
+      next: () => {
+        this.notificationSrv.addNotification(NotificationType.SUCCESS, "Registered successfully");
+        void this.router.navigateByUrl("/auth/pending-confirmation");
+      },
+      error: (error: BackendError) => this.notificationSrv.addNotification(NotificationType.ERROR, error.message),
     });
   }
 }

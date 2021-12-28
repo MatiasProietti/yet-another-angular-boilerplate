@@ -1,7 +1,10 @@
 import { Component } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { BackendError } from "@app/shared/models/backend-error";
 import { FieldGroup } from "@app/shared/models/field-group";
 import { FormValue } from "@app/shared/models/form-value";
+import { NotificationType } from "@app/shared/modules/notification/constants/notification-type";
+import { NotificationService } from "@app/shared/modules/notification/services/notification.service";
 import { Validators } from "@app/shared/validators/validators";
 import { AuthService } from "../../services/auth.service";
 
@@ -39,15 +42,24 @@ export class ResetPasswordComponent {
       validators: [Validators.controlsMatch("password", "confirmPassword"), Validators.required],
     },
   ]);
-  constructor(private activatedRoute: ActivatedRoute, private authSrv: AuthService, private router: Router) {
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private authSrv: AuthService,
+    private router: Router,
+    private notificationSrv: NotificationService
+  ) {
     this.activatedRoute.queryParams.subscribe((params) => {
       this.token = params["token"] as string;
     });
   }
 
   public onSubmit($event: FormValue): void {
-    this.authSrv.resetPassword($event["password"] as string, this.token).subscribe(() => {
-      void this.router.navigateByUrl("auth/login");
+    this.authSrv.resetPassword($event["password"] as string, this.token).subscribe({
+      next: () => {
+        this.notificationSrv.addNotification(NotificationType.SUCCESS, "Password changed successfully");
+        void this.router.navigateByUrl("auth/login");
+      },
+      error: (error: BackendError) => this.notificationSrv.addNotification(NotificationType.ERROR, error.message),
     });
   }
 }
