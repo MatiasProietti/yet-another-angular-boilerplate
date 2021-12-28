@@ -22,7 +22,11 @@
   - [x] Model
   - [ ] Responsive
   - [ ] Password Entropy
-- [ ] Add fake/mock backend
+  - [ ] Loading Spinner
+  - [ ] Backend connection
+  - [ ] Notifications
+  - [ ] Response handling
+- [x] Fake/mock backend
 - [ ] Optimize assets
 - [ ] Tests
 - [ ] Loading spinner
@@ -30,6 +34,12 @@
 - [ ] Unsubscribe onDestroy
 - [ ] Tooltips
 - [ ] Notifications
+- [x] JWT Interceptor
+- [ ] Error Interceptor
+- [ ] Themes
+  - [x] Service
+  - [ ] Dark Theme
+  - [x] Light Theme
 
 ## Project Structure
 
