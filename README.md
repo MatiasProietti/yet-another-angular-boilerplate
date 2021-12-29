@@ -22,10 +22,10 @@
   - [x] Model
   - [ ] Responsive
   - [ ] Password Entropy
-  - [ ] Loading Spinner
-  - [ ] Backend connection
-  - [ ] Notifications
-  - [ ] Response handling
+  - [x] Loading Spinner
+  - [x] Backend connection
+  - [x] Notifications
+  - [x] Response handling
 - [x] Fake/mock backend
 - [ ] Optimize assets
 - [ ] Tests
@@ -35,7 +35,7 @@
 - [ ] Tooltips
 - [ ] Notifications
 - [x] JWT Interceptor
-- [ ] Error Interceptor
+- [x] Error Interceptor
 - [ ] Themes
   - [x] Service
   - [ ] Dark Theme
