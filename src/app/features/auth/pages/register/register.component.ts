@@ -14,6 +14,7 @@ import { AuthService } from "../../services/auth.service";
   styleUrls: ["./register.component.scss"],
 })
 export class RegisterComponent {
+  public loading = false;
   public fieldGroup = new FieldGroup([
     {
       name: "username",
@@ -52,12 +53,16 @@ export class RegisterComponent {
   constructor(private authSrv: AuthService, private router: Router, private notificationSrv: NotificationService) {}
 
   public onSubmit($event: FormValue): void {
-    this.authSrv.register($event["username"] as string, $event["email"] as string, $event["password"] as string).subscribe({
-      next: () => {
-        this.notificationSrv.addNotification(NotificationType.SUCCESS, "Registered successfully");
-        void this.router.navigateByUrl("/auth/pending-confirmation");
-      },
-      error: (error: BackendError) => this.notificationSrv.addNotification(NotificationType.ERROR, error.message),
-    });
+    this.loading = true;
+    this.authSrv
+      .register($event["username"] as string, $event["email"] as string, $event["password"] as string)
+      .subscribe({
+        next: () => {
+          this.notificationSrv.addNotification(NotificationType.SUCCESS, "Registered successfully");
+          void this.router.navigateByUrl("/auth/pending-confirmation");
+        },
+        error: (error: BackendError) => this.notificationSrv.addNotification(NotificationType.ERROR, error.message),
+      })
+      .add(() => (this.loading = false));
   }
 }

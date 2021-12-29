@@ -53,8 +53,9 @@
 
   <div class="row justify-content-center">
     <div class="col-12">
-      <button mat-raised-button color="primary" class="submit-button" type="submit">
-        {{ this.btnText }}
+      <button mat-raised-button color="primary" class="submit-button" type="submit" [disabled]="this.loading">
+        <span>{{ this.btnText }}</span>
+        <mat-icon *ngIf="this.loading" class="spinner"><mat-spinner diameter="40"></mat-spinner></mat-icon>
       </button>
     </div>
   </div>
@@ -91,4 +92,6 @@
 <!--
   @todo: implement auth0
   @todo: implement recaptcha
+
+  @todo: button with spinner can be moved to a shared component
 -->

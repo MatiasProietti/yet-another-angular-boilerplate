@@ -1,5 +1,9 @@
 <app-auth-card>
   <span slot="title">Confirm Email</span>
   <span slot="subtitle">Press the button to confirm your email</span>
-  <app-auth-form btnText="Confirm email" [fieldGroup]="this.fieldGroup" (formSubmit)="this.onSubmit()"></app-auth-form>
+  <app-auth-form
+    btnText="Confirm email"
+    [fieldGroup]="this.fieldGroup"
+    (formSubmit)="this.onSubmit()"
+    [loading]="this.loading"></app-auth-form>
 </app-auth-card>

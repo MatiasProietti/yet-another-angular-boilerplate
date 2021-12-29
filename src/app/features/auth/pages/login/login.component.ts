@@ -13,6 +13,7 @@ import { AuthService } from "../../services/auth.service";
   styleUrls: ["./login.component.scss"],
 })
 export class LoginComponent {
+  public loading = false;
   public fieldGroup = new FieldGroup([
     {
       name: "username",
@@ -34,11 +35,15 @@ export class LoginComponent {
   constructor(private authSrv: AuthService, private notificationSrv: NotificationService) {}
 
   public onSubmit($event: FormValue): void {
-    this.authSrv.login($event["username"] as string, $event["password"] as string, $event["rememberMe"] as boolean).subscribe({
-      next: () => {
-        this.notificationSrv.addNotification(NotificationType.SUCCESS, "Logged in successfully");
-      },
-      error: (error: BackendError) => this.notificationSrv.addNotification(NotificationType.ERROR, error.message),
-    });
+    this.loading = true;
+    this.authSrv
+      .login($event["username"] as string, $event["password"] as string, $event["rememberMe"] as boolean)
+      .subscribe({
+        next: () => {
+          this.notificationSrv.addNotification(NotificationType.SUCCESS, "Logged in successfully");
+        },
+        error: (error: BackendError) => this.notificationSrv.addNotification(NotificationType.ERROR, error.message),
+      })
+      .add(() => (this.loading = false));
   }
 }

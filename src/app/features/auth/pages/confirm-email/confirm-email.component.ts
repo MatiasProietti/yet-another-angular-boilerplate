@@ -12,6 +12,7 @@ import { AuthService } from "../../services/auth.service";
   styleUrls: ["./confirm-email.component.scss"],
 })
 export class ConfirmEmailComponent {
+  public loading = false;
   public fieldGroup = new FieldGroup([]);
   public id = 0;
   public hash = "";
@@ -32,14 +33,18 @@ export class ConfirmEmailComponent {
   }
 
   public onSubmit(): void {
+    this.loading = true;
     if (!this.id || !this.hash || !this.expires || !this.signature) return;
 
-    this.authSrv.confirmEmail(this.id, this.hash, this.expires, this.signature).subscribe({
-      next: () => {
-        this.notificationSrv.addNotification(NotificationType.SUCCESS, "Email confirmed successfully");
-        void this.router.navigateByUrl("/auth/login");
-      },
-      error: (error: BackendError) => this.notificationSrv.addNotification(NotificationType.ERROR, error.message),
-    });
+    this.authSrv
+      .confirmEmail(this.id, this.hash, this.expires, this.signature)
+      .subscribe({
+        next: () => {
+          this.notificationSrv.addNotification(NotificationType.SUCCESS, "Email confirmed successfully");
+          void this.router.navigateByUrl("/auth/login");
+        },
+        error: (error: BackendError) => this.notificationSrv.addNotification(NotificationType.ERROR, error.message),
+      })
+      .add(() => (this.loading = false));
   }
 }

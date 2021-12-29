@@ -19,9 +19,10 @@ import { ForgotPasswordComponent } from "./pages/forgot-password/forgot-password
 import { ResetPasswordComponent } from "./pages/reset-password/reset-password.component";
 import { ConfirmEmailComponent } from "./pages/confirm-email/confirm-email.component";
 import { SharedComponentsModule } from "@app/shared/components/shared.components.module";
-import { PendingConfirmationComponent } from './pages/pending-confirmation/pending-confirmation.component';
-import { ResendEmailComponent } from './pages/resend-email/resend-email.component';
-import { ChangePasswordComponent } from './pages/change-password/change-password.component';
+import { PendingConfirmationComponent } from "./pages/pending-confirmation/pending-confirmation.component";
+import { ResendEmailComponent } from "./pages/resend-email/resend-email.component";
+import { ChangePasswordComponent } from "./pages/change-password/change-password.component";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { ChangePasswordComponent } from './pages/change-password/change-password
     MatIconModule,
     MatDividerModule,
     SharedComponentsModule,
+    MatProgressSpinnerModule,
   ],
 })
 export class AuthModule {}

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 
 import { FieldGroup } from "@app/shared/models/field-group";
@@ -11,12 +11,13 @@ import { Validators } from "@app/shared/validators/validators";
   templateUrl: "./auth-form.component.html",
   styleUrls: ["./auth-form.component.scss"],
 })
-export class AuthFormComponent implements OnInit {
+export class AuthFormComponent implements OnInit, OnChanges {
   @Input() fieldGroup!: FieldGroup;
   @Input() rememberMe = false;
   @Input() termsOfService = false;
   @Input() integration = false;
   @Input() btnText = "";
+  @Input() loading = false;
 
   // submit is a reserved word
   @Output() formSubmit = new EventEmitter<FormValue>();
@@ -39,6 +40,13 @@ export class AuthFormComponent implements OnInit {
       this.form.get("password")?.valueChanges.subscribe(() => this.form.get("confirmPassword")?.updateValueAndValidity());
   }
 
+  ngOnChanges(): void {
+    if (!this.form) return;
+    if (this.loading === true) {
+      this.form.disable();
+    } else this.form.enable();
+  }
+
   public toggleRevealPassword(): void {
     this.revealPassword = !this.revealPassword;
   }
@@ -52,5 +60,3 @@ export class AuthFormComponent implements OnInit {
     this.formSubmit.emit(this.form.value as FormValue);
   }
 }
-
-//@todo: add loading spinner on button

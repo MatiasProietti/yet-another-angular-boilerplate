@@ -14,6 +14,7 @@ import { AuthService } from "../../services/auth.service";
   styleUrls: ["./reset-password.component.scss"],
 })
 export class ResetPasswordComponent {
+  public loading = false;
   public token = "";
   public fieldGroup = new FieldGroup([
     //fake username input needed to trigger chrome's password suggestion
@@ -54,12 +55,16 @@ export class ResetPasswordComponent {
   }
 
   public onSubmit($event: FormValue): void {
-    this.authSrv.resetPassword($event["password"] as string, this.token).subscribe({
-      next: () => {
-        this.notificationSrv.addNotification(NotificationType.SUCCESS, "Password changed successfully");
-        void this.router.navigateByUrl("auth/login");
-      },
-      error: (error: BackendError) => this.notificationSrv.addNotification(NotificationType.ERROR, error.message),
-    });
+    this.loading = true;
+    this.authSrv
+      .resetPassword($event["password"] as string, this.token)
+      .subscribe({
+        next: () => {
+          this.notificationSrv.addNotification(NotificationType.SUCCESS, "Password changed successfully");
+          void this.router.navigateByUrl("auth/login");
+        },
+        error: (error: BackendError) => this.notificationSrv.addNotification(NotificationType.ERROR, error.message),
+      })
+      .add(() => (this.loading = false));
   }
 }

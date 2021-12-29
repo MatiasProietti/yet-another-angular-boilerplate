@@ -14,6 +14,7 @@ import { AuthService } from "../../services/auth.service";
   styleUrls: ["./forgot-password.component.scss"],
 })
 export class ForgotPasswordComponent {
+  public loading = false;
   public fieldGroup = new FieldGroup([
     {
       name: "email",
@@ -27,12 +28,16 @@ export class ForgotPasswordComponent {
   constructor(private authSrv: AuthService, private router: Router, private notificationSrv: NotificationService) {}
 
   public onSubmit($event: FormValue): void {
-    this.authSrv.forgotPassword($event["email"] as string).subscribe({
-      next: () => {
-        this.notificationSrv.addNotification(NotificationType.SUCCESS, "Recovery email sent successfully");
-        void this.router.navigateByUrl("/auth/login");
-      },
-      error: (error: BackendError) => this.notificationSrv.addNotification(NotificationType.ERROR, error.message),
-    });
+    this.loading = true;
+    this.authSrv
+      .forgotPassword($event["email"] as string)
+      .subscribe({
+        next: () => {
+          this.notificationSrv.addNotification(NotificationType.SUCCESS, "Recovery email sent successfully");
+          void this.router.navigateByUrl("/auth/login");
+        },
+        error: (error: BackendError) => this.notificationSrv.addNotification(NotificationType.ERROR, error.message),
+      })
+      .add(() => (this.loading = false));
   }
 }

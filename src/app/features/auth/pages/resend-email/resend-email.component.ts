@@ -13,6 +13,7 @@ import { AuthService } from "../../services/auth.service";
   styleUrls: ["./resend-email.component.scss"],
 })
 export class ResendEmailComponent {
+  public loading = false;
   public fieldGroup = new FieldGroup([
     {
       name: "email",
@@ -27,11 +28,15 @@ export class ResendEmailComponent {
   constructor(private authSrv: AuthService, private notificationSrv: NotificationService) {}
 
   public onSubmit($event: FormValue): void {
-    this.authSrv.resendEmail($event["email"] as string).subscribe({
-      next: () => {
-        this.notificationSrv.addNotification(NotificationType.SUCCESS, "Verification email sent successfully");
-      },
-      error: (error: BackendError) => this.notificationSrv.addNotification(NotificationType.ERROR, error.message),
-    });
+    this.loading = true;
+    this.authSrv
+      .resendEmail($event["email"] as string)
+      .subscribe({
+        next: () => {
+          this.notificationSrv.addNotification(NotificationType.SUCCESS, "Verification email sent successfully");
+        },
+        error: (error: BackendError) => this.notificationSrv.addNotification(NotificationType.ERROR, error.message),
+      })
+      .add(() => (this.loading = false));
   }
 }
