@@ -4,10 +4,10 @@ import { NotificationContentComponent } from "./components/notification-content/
 import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
-import { MatSnackBarModule } from "@angular/material/snack-bar";
-
+import { OverlayModule } from "@angular/cdk/overlay";
+import { NotificationContainerComponent } from "./components/notification-container/notification-container.component";
 @NgModule({
-  declarations: [NotificationContentComponent],
-  imports: [CommonModule, MatProgressBarModule, MatIconModule, MatButtonModule, MatSnackBarModule],
+  declarations: [NotificationContentComponent, NotificationContainerComponent],
+  imports: [CommonModule, MatProgressBarModule, MatIconModule, MatButtonModule, OverlayModule],
 })
 export class NotificationModule {}

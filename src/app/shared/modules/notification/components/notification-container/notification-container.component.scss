@@ -1,0 +1,12 @@
+.notification-container {
+  background-color: var(--notification-background-color) !important;
+  border-radius: 4px;
+  box-sizing: border-box;
+  display: block;
+  margin: 24px;
+  max-width: 33vw;
+  min-width: 344px;
+  min-height: 48px;
+  transform-origin: center;
+  position: relative;
+}

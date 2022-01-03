@@ -33,10 +33,10 @@ export class ForgotPasswordComponent {
       .forgotPassword($event["email"] as string)
       .subscribe({
         next: () => {
-          this.notificationSrv.addNotification(NotificationType.SUCCESS, "Recovery email sent successfully");
+          this.notificationSrv.add(NotificationType.SUCCESS, "Recovery email sent successfully");
           void this.router.navigateByUrl("/auth/login");
         },
-        error: (error: BackendError) => this.notificationSrv.addNotification(NotificationType.ERROR, error.message),
+        error: (error: BackendError) => this.notificationSrv.add(NotificationType.ERROR, error.message),
       })
       .add(() => (this.loading = false));
   }

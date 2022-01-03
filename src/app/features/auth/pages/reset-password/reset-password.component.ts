@@ -60,10 +60,10 @@ export class ResetPasswordComponent {
       .resetPassword($event["password"] as string, this.token)
       .subscribe({
         next: () => {
-          this.notificationSrv.addNotification(NotificationType.SUCCESS, "Password changed successfully");
+          this.notificationSrv.add(NotificationType.SUCCESS, "Password changed successfully");
           void this.router.navigateByUrl("auth/login");
         },
-        error: (error: BackendError) => this.notificationSrv.addNotification(NotificationType.ERROR, error.message),
+        error: (error: BackendError) => this.notificationSrv.add(NotificationType.ERROR, error.message),
       })
       .add(() => (this.loading = false));
   }

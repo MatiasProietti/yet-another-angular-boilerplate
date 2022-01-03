@@ -40,10 +40,10 @@ export class ConfirmEmailComponent {
       .confirmEmail(this.id, this.hash, this.expires, this.signature)
       .subscribe({
         next: () => {
-          this.notificationSrv.addNotification(NotificationType.SUCCESS, "Email confirmed successfully");
+          this.notificationSrv.add(NotificationType.SUCCESS, "Email confirmed successfully");
           void this.router.navigateByUrl("/auth/login");
         },
-        error: (error: BackendError) => this.notificationSrv.addNotification(NotificationType.ERROR, error.message),
+        error: (error: BackendError) => this.notificationSrv.add(NotificationType.ERROR, error.message),
       })
       .add(() => (this.loading = false));
   }

@@ -58,10 +58,10 @@ export class RegisterComponent {
       .register($event["username"] as string, $event["email"] as string, $event["password"] as string)
       .subscribe({
         next: () => {
-          this.notificationSrv.addNotification(NotificationType.SUCCESS, "Registered successfully");
+          this.notificationSrv.add(NotificationType.SUCCESS, "Registered successfully");
           void this.router.navigateByUrl("/auth/pending-confirmation");
         },
-        error: (error: BackendError) => this.notificationSrv.addNotification(NotificationType.ERROR, error.message),
+        error: (error: BackendError) => this.notificationSrv.add(NotificationType.ERROR, error.message),
       })
       .add(() => (this.loading = false));
   }

@@ -33,9 +33,9 @@ export class ResendEmailComponent {
       .resendEmail($event["email"] as string)
       .subscribe({
         next: () => {
-          this.notificationSrv.addNotification(NotificationType.SUCCESS, "Verification email sent successfully");
+          this.notificationSrv.add(NotificationType.SUCCESS, "Verification email sent successfully");
         },
-        error: (error: BackendError) => this.notificationSrv.addNotification(NotificationType.ERROR, error.message),
+        error: (error: BackendError) => this.notificationSrv.add(NotificationType.ERROR, error.message),
       })
       .add(() => (this.loading = false));
   }

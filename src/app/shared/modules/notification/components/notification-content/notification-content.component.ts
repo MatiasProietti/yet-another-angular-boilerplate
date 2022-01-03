@@ -1,5 +1,4 @@
-import { Component, Inject } from "@angular/core";
-import { MatSnackBarRef, MAT_SNACK_BAR_DATA } from "@angular/material/snack-bar";
+import { Component, Input, Output, EventEmitter } from "@angular/core";
 import { NotificationType } from "../../constants/notification-type";
 import { NotificationConfig } from "../../interfaces/notification-config";
 
@@ -9,23 +8,17 @@ import { NotificationConfig } from "../../interfaces/notification-config";
   styleUrls: ["./notification-content.component.scss"],
 })
 export class NotificationContentComponent implements NotificationConfig {
-  public type;
-  public title;
-  public text;
-  public duration;
+  @Input() type: NotificationType = NotificationType.ERROR;
+  @Input() title = "";
+  @Input() text = "";
+  @Input() duration = 5000;
 
-  constructor(
-    @Inject(MAT_SNACK_BAR_DATA) public data: NotificationConfig,
-    private _snackRef: MatSnackBarRef<NotificationContentComponent>
-  ) {
-    this.type = data.type;
-    this.title = data.title;
-    this.text = data.text;
-    this.duration = data.duration;
-  }
+  @Output() dismiss = new EventEmitter();
 
-  public dismiss(): void {
-    this._snackRef.dismiss();
+  constructor() {}
+
+  public close(): void {
+    this.dismiss.emit("Closed");
   }
 
   public getIcon(): string {

@@ -1,0 +1,11 @@
+<div
+  class="notification-container"
+  *ngFor="let notification of this.notificationSrv.notificationList | slice: 0:MAX_NOTIFICATIONS"
+  @notificationAnimation>
+  <app-notification-content
+    [type]="notification.type"
+    [title]="notification.title"
+    [text]="notification.text"
+    [duration]="notification.duration"
+    (dismiss)="this.onDismiss(notification)"></app-notification-content>
+</div>

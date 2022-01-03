@@ -1,6 +1,8 @@
+import { Overlay, OverlayRef } from "@angular/cdk/overlay";
+import { ComponentPortal } from "@angular/cdk/portal";
 import { Injectable } from "@angular/core";
-import { MatSnackBar, MatSnackBarConfig } from "@angular/material/snack-bar";
-import { NotificationContentComponent } from "../components/notification-content/notification-content.component";
+import { Arr } from "@app/shared/utils/arr";
+import { NotificationContainerComponent } from "../components/notification-container/notification-container.component";
 import { NotificationType } from "../constants/notification-type";
 import { NotificationConfig } from "../interfaces/notification-config";
 
@@ -8,31 +10,33 @@ import { NotificationConfig } from "../interfaces/notification-config";
   providedIn: "root",
 })
 export class NotificationService {
-  private queue: MatSnackBarConfig<NotificationConfig>[] = [];
-  constructor(private snackBar: MatSnackBar) {}
+  public notificationList: NotificationConfig[] = [];
+  public overlayRef?: OverlayRef;
+  constructor(private overlay: Overlay) {}
 
-  public addNotification(type = NotificationType.ERROR, title = "Something went wrong", text = "", duration = 5000): void {
-    const snackBarConfig: MatSnackBarConfig<NotificationConfig> = {
-      horizontalPosition: "end",
-      verticalPosition: "bottom",
-      panelClass: "app-notification-container",
-      data: {
-        type: type,
-        title: title,
-        text: text,
-        duration: duration,
-      },
+  public add(type = NotificationType.ERROR, title = "Something went wrong", text = "", duration = 5000): void {
+    if (!this.overlayRef) this.createOverlay();
+    const notificationConfig: NotificationConfig = {
+      type: type,
+      title: title,
+      text: text,
+      duration: duration,
     };
-    this.queue.push(snackBarConfig);
-
-    if (!this.snackBar._openedSnackBarRef) this.openNext();
+    this.notificationList.push(notificationConfig);
   }
 
-  private openNext(): void {
-    if (this.queue.length > 0)
-      this.snackBar
-        .openFromComponent(NotificationContentComponent, this.queue.shift())
-        .afterDismissed()
-        .subscribe(() => this.openNext());
+  public remove(notification: NotificationConfig): void {
+    Arr.removeElement(this.notificationList, notification);
+  }
+
+  public clear(): void {
+    this.notificationList = [];
+  }
+
+  private createOverlay(): void {
+    this.overlayRef = this.overlay.create({
+      positionStrategy: this.overlay.position().global().bottom().right(),
+    });
+    this.overlayRef.attach(new ComponentPortal(NotificationContainerComponent));
   }
 }

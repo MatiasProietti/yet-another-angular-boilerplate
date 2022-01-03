@@ -14,10 +14,10 @@
       </div>
     </div>
     <div class="col-auto button">
-      <button mat-icon-button (click)="this.dismiss()">
+      <button mat-icon-button (click)="this.close()">
         <mat-icon color="warn">close</mat-icon>
       </button>
     </div>
   </div>
-  <mat-progress-bar mode="determinate" color="primary" value="0" (animationend)="this.dismiss()"></mat-progress-bar>
+  <mat-progress-bar mode="determinate" color="primary" value="0" (animationend)="this.close()"></mat-progress-bar>
 </div>
