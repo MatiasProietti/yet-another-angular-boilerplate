@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ThemeService } from "@app/shared/services/theme.service";
-import { random } from "@app/shared/utils/random";
+import { Arr } from "@app/shared/utils/arr";
 
 @Component({
   selector: "app-auth",
@@ -28,9 +28,8 @@ export class AuthComponent implements OnInit {
   };
   constructor(public themeSrv: ThemeService) {
     this.themeSrv.activeTheme.subscribe((theme) => {
-      const images = this.images[theme];
-      const randomIndex = random.integer(0, images.length - 1);
-      this.background = `linear-gradient(to right, var(--background-gradient-color), var(--background-gradient-color)), url("${images[randomIndex]}")`;
+      const image = Arr.randomElement(this.images[theme]);
+      this.background = `linear-gradient(to right, var(--background-gradient-color), var(--background-gradient-color)), url("${image}")`;
     });
   }
 
