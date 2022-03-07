@@ -33,7 +33,7 @@
 - [ ] Error pages (404, 500, etc.)
 - [ ] Unsubscribe onDestroy
 - [ ] Tooltips
-- [ ] Notifications
+- [x] Notifications
 - [x] JWT Interceptor
 - [x] Error Interceptor
 - [ ] Themes
