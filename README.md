@@ -20,7 +20,7 @@
   - [x] Service
   - [x] Auth Guard
   - [x] Model
-  - [ ] Responsive
+  - [x] Responsive
   - [ ] Password Entropy
   - [x] Loading Spinner
   - [x] Backend connection
