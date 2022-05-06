@@ -26,6 +26,7 @@
   - [x] Backend connection
   - [x] Notifications
   - [x] Response handling
+  - [ ] Tests
 - [x] Fake/mock backend
 - [ ] Optimize assets
 - [ ] Tests
@@ -72,3 +73,13 @@ Optional folders might be added in the future if needed. For example: `constants
 
 I'm currently working on the first feature of this project. As I'm working alone and there isn't a working feature yet I didn't find it useful to use an empty main branch with a separated feature branch for the auth part.
 After finishing with the Auth feature I will start working with feature branches.
+
+## Is this project abandonded?
+
+No, I have a few personal projects and I work on them in my free time. This means that there will be times where I only make a few commits and times where I push a lot of commits.
+
+If the project gains traction then I will make it a priority.
+
+## How can I contribute?
+
+Feel free to contribute creating an issue or a PR. When it comes to new features I'm only accepting suggestions/issues, but feel free to make issues and/or PRs for improvements in code, style, architecture, etc. The project is in an early stage and I didn't make templates for PR or issues so feel free to use any format.
