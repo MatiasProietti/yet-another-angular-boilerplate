@@ -1,3 +1,7 @@
+:host {
+  position: relative;
+}
+
 .background {
   background-attachment: fixed;
   -webkit-background-size: cover;
@@ -12,9 +16,12 @@
 }
 
 .container {
-  height: 100%;
+  min-height: 100%;
+
+  display: flex;
 }
 
 .row {
-  height: 100%;
+  min-height: 100%;
+  width: 100%;
 }
