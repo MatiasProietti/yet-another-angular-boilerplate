@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router } from "@angular/router";
+import { AUTH_ROUTES } from "../constants/auth.consts";
 import { AuthService } from "./auth.service";
 
 @Injectable({
@@ -12,11 +13,10 @@ export class AuthGuardService implements CanActivate, CanActivateChild {
     return this.authSrv.isAuthenticated();
   }
   //@todo: replace "login" and "logout" with constants
-  //@todo: replace routes with constants
   public canActivateChild(childRoute: ActivatedRouteSnapshot): boolean {
     if (childRoute.data["requiredState"] === "login") {
       if (!this.authSrv.isAuthenticated()) {
-        void this.router.navigateByUrl("/auth/login").then(() => false);
+        void this.router.navigate([AUTH_ROUTES.BASE, AUTH_ROUTES.LOGIN]);
         return false;
       }
 

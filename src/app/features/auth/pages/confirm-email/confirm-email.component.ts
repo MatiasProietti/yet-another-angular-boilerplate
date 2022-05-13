@@ -4,6 +4,7 @@ import { BackendError } from "@app/shared/models/backend-error";
 import { FieldGroup } from "@app/shared/models/field-group";
 import { NotificationType } from "@app/shared/modules/notification/constants/notification-type";
 import { NotificationService } from "@app/shared/modules/notification/services/notification.service";
+import { AUTH_ROUTES } from "../../constants/auth.consts";
 import { AuthService } from "../../services/auth.service";
 
 @Component({
@@ -41,7 +42,7 @@ export class ConfirmEmailComponent {
       .subscribe({
         next: () => {
           this.notificationSrv.add(NotificationType.SUCCESS, "Email confirmed successfully");
-          void this.router.navigateByUrl("/auth/login");
+          void this.router.navigate([AUTH_ROUTES.BASE, AUTH_ROUTES.LOGIN]);
         },
         error: (error: BackendError) => this.notificationSrv.add(NotificationType.ERROR, error.message),
       })

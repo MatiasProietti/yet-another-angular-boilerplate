@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { AuthComponent } from "./auth.component";
+import { AUTH_ROUTES } from "./constants/auth.consts";
 import { ChangePasswordComponent } from "./pages/change-password/change-password.component";
 import { ConfirmEmailComponent } from "./pages/confirm-email/confirm-email.component";
 import { ForgotPasswordComponent } from "./pages/forgot-password/forgot-password.component";
@@ -18,48 +19,48 @@ const routes: Routes = [
     canActivateChild: [AuthGuard],
     children: [
       {
-        path: "login",
+        path: AUTH_ROUTES.LOGIN,
         component: LoginComponent,
         data: { requiredState: "logout" },
       },
       {
-        path: "register",
+        path: AUTH_ROUTES.REGISTER,
         component: RegisterComponent,
         data: { requiredState: "logout" },
       },
       {
-        path: "forgot-password",
+        path: AUTH_ROUTES.FORGOT_PASSWORD,
         component: ForgotPasswordComponent,
         data: { requiredState: "logout" },
       },
       {
-        path: "reset-password",
+        path: AUTH_ROUTES.RESET_PASSWORD,
         component: ResetPasswordComponent,
         data: { requiredState: "logout" },
       },
       {
-        path: "confirm-email",
+        path: AUTH_ROUTES.CONFIRM_EMAIL,
         component: ConfirmEmailComponent,
         data: { requiredState: "logout" },
       },
       {
-        path: "pending-confirmation",
+        path: AUTH_ROUTES.PENDING_CONFIRMATION,
         component: PendingConfirmationComponent,
         data: { requiredState: "logout" },
       },
       {
-        path: "resend-email",
+        path: AUTH_ROUTES.RESEND_EMAIL,
         component: ResendEmailComponent,
         data: { requiredState: "logout" },
       },
       {
-        path: "change-password",
+        path: AUTH_ROUTES.CHANGE_PASSWORD,
         component: ChangePasswordComponent,
         data: { requiredState: "login" },
       },
       {
         path: "**",
-        redirectTo: "login",
+        redirectTo: AUTH_ROUTES.LOGIN,
       },
     ],
   },
@@ -71,5 +72,4 @@ const routes: Routes = [
 })
 export class AuthRoutingModule {}
 
-//@todo: replace routes with constants
 //@todo: replace "login" and "logout" with constants

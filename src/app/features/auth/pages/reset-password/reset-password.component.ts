@@ -6,6 +6,7 @@ import { FormValue } from "@app/shared/models/form-value";
 import { NotificationType } from "@app/shared/modules/notification/constants/notification-type";
 import { NotificationService } from "@app/shared/modules/notification/services/notification.service";
 import { Validators } from "@app/shared/validators/validators";
+import { AUTH_ROUTES } from "../../constants/auth.consts";
 import { AuthService } from "../../services/auth.service";
 
 @Component({
@@ -61,7 +62,7 @@ export class ResetPasswordComponent {
       .subscribe({
         next: () => {
           this.notificationSrv.add(NotificationType.SUCCESS, "Password changed successfully");
-          void this.router.navigateByUrl("auth/login");
+          void this.router.navigate([AUTH_ROUTES.BASE, AUTH_ROUTES.LOGIN]);
         },
         error: (error: BackendError) => this.notificationSrv.add(NotificationType.ERROR, error.message),
       })
