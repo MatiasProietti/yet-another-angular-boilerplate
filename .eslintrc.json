@@ -44,7 +44,10 @@
             "style": "kebab-case"
           }
         ],
-        "@typescript-eslint/unbound-method": "off"
+        "@typescript-eslint/unbound-method": "off",
+        "@angular-eslint/component-class-suffix": {
+          "suffixes": ["Component", "Page"]
+        }
       }
     },
     {
