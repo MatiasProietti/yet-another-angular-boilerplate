@@ -47,7 +47,7 @@
       <mat-checkbox color="primary" formControlName="rememberMe">Remember me</mat-checkbox>
     </div>
     <div class="col-auto">
-      <a routerLink="/auth/forgot-password">Forgot password?</a>
+      <a [routerLink]="this.forgotPasswordUrl">Forgot password?</a>
     </div>
   </div>
 
@@ -61,29 +61,31 @@
   </div>
 
   <ng-container *ngIf="this.integration">
-    <div class="row justify-content-center integration">
-      <div class="col-12">
-        <app-divider color="#e2e8f0"><span>Or continue with</span></app-divider>
-      </div>
-    </div>
-
-    <div class="row justify-content-between">
-      <div class="col-4">
-        <button mat-stroked-button class="submit-button" type="button">
-          <mat-icon svgIcon="brands:github" style="color: #171515"></mat-icon>
-        </button>
+    <div class="integration">
+      <div class="row justify-content-center">
+        <div class="col-12">
+          <app-divider color="#e2e8f0"><span>Or continue with</span></app-divider>
+        </div>
       </div>
 
-      <div class="col-4">
-        <button mat-stroked-button class="submit-button" type="button">
-          <mat-icon svgIcon="brands:discord" style="color: #5865f2"></mat-icon>
-        </button>
-      </div>
+      <div class="row justify-content-between integration-buttons">
+        <div class="col-4">
+          <button mat-stroked-button class="submit-button" type="button">
+            <mat-icon svgIcon="brands:github" class="github"></mat-icon>
+          </button>
+        </div>
 
-      <div class="col-4">
-        <button mat-stroked-button class="submit-button" type="button">
-          <mat-icon svgIcon="brands:google-color"></mat-icon>
-        </button>
+        <div class="col-4">
+          <button mat-stroked-button class="submit-button" type="button">
+            <mat-icon svgIcon="brands:discord" class="discord"></mat-icon>
+          </button>
+        </div>
+
+        <div class="col-4">
+          <button mat-stroked-button class="submit-button" type="button">
+            <mat-icon svgIcon="brands:google-color"></mat-icon>
+          </button>
+        </div>
       </div>
     </div>
   </ng-container>
@@ -95,4 +97,6 @@
 
   @todo: button with spinner can be moved to a shared component
   @todo: form fields could be transformed into components
+
+  @todo: Improve component when Angular releases Strictly Typed Forms (Angular 14)
 -->

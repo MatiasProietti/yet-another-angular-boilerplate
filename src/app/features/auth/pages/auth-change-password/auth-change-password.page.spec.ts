@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
-import { AuthFormComponent } from "./auth-form.component";
+import { AuthChangePasswordPage } from "./auth-change-password.page";
 
-describe("AuthFormComponent", () => {
-  let component: AuthFormComponent;
-  let fixture: ComponentFixture<AuthFormComponent>;
+describe("AuthChangePasswordPage", () => {
+  let component: AuthChangePasswordPage;
+  let fixture: ComponentFixture<AuthChangePasswordPage>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AuthFormComponent],
+      declarations: [AuthChangePasswordPage],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AuthFormComponent);
+    fixture = TestBed.createComponent(AuthChangePasswordPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

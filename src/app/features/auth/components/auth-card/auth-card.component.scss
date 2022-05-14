@@ -1,18 +1,18 @@
 mat-card {
   padding: 48px;
   border-radius: 1rem !important;
-}
 
-.logo {
-  margin-bottom: 32px;
-  div > img {
-    width: 100%;
+  .logo {
+    margin-bottom: 32px;
+    div > img {
+      width: 100%;
+    }
   }
-}
 
-.mat-display-1 {
-  color: #1e293b;
-  font-weight: 800;
-  letter-spacing: -0.05rem;
-  margin-bottom: 2px !important;
+  .mat-display-1 {
+    color: #1e293b;
+    font-weight: 800;
+    letter-spacing: -0.05rem;
+    margin-bottom: 2px !important;
+  }
 }

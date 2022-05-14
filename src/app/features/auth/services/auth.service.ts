@@ -1,11 +1,9 @@
 import { Injectable } from "@angular/core";
+import jwt_decode from "jwt-decode";
 import { Observable, share, take } from "rxjs";
 import { AuthRepositoryService } from "./auth-repository.service";
-import jwt_decode from "jwt-decode";
 
-@Injectable({
-  providedIn: "root",
-})
+@Injectable()
 export class AuthService {
   constructor(private repoSrv: AuthRepositoryService) {}
 
@@ -55,10 +53,6 @@ export class AuthService {
     //probably should return an empty observable to have the same return type for all the public methods of this service
   }
 
-  public isAuthenticated(): boolean {
-    return !!(localStorage.getItem("token") || sessionStorage.getItem("token"));
-  }
-
   private removeToken(): void {
     localStorage.removeItem("token");
     localStorage.removeItem("decodedToken");
@@ -76,3 +70,5 @@ export class AuthService {
     }
   }
 }
+
+// @todo: remove <T> and add typing

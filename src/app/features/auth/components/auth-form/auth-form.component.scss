@@ -1,59 +1,69 @@
 form {
   margin-top: 32px;
-}
 
-.suffix-wrapper {
-  width: 2.5em;
-  height: 2.5em;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+  mat-form-field {
+    margin-bottom: 10px;
 
-mat-form-field {
-  margin-bottom: 10px;
-}
-
-.submit-button {
-  width: 100%;
-  border-radius: 99999px;
-  height: 46px;
-  font-weight: 800;
-  letter-spacing: 1px;
-}
-
-.spinner {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-app-divider {
-  span {
-    color: #64748b;
+    .suffix-wrapper {
+      width: 2.5em;
+      height: 2.5em;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
   }
-}
 
-.tos {
-  margin-bottom: 22px;
-}
+  .submit-button {
+    width: 100%;
+    border-radius: 99999px;
+    height: 46px;
+    font-weight: 800;
+    letter-spacing: 1px;
 
-.remember-me {
-  margin-bottom: 22px;
-}
+    .spinner {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
 
-.integration {
-  margin-top: 22px;
-  margin-bottom: 22px;
-}
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 
-.hidden {
-  display: none;
+  .tos {
+    margin-bottom: 22px;
+  }
+
+  .remember-me {
+    margin-bottom: 22px;
+  }
+
+  .integration {
+    margin-top: 22px;
+    app-divider {
+      span {
+        color: #64748b;
+      }
+    }
+    .integration-buttons {
+      margin-top: 22px;
+
+      mat-icon {
+        &.github {
+          color: #171515;
+        }
+        &.discord {
+          color: #5865f2;
+        }
+      }
+    }
+  }
+
+  .hidden {
+    display: none;
+  }
 }

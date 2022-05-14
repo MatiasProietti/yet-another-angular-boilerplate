@@ -2,15 +2,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { AuthComponent } from "./auth.component";
 import { AUTH_ROUTES } from "./constants/auth.consts";
-import { ChangePasswordComponent } from "./pages/change-password/change-password.component";
-import { ConfirmEmailComponent } from "./pages/confirm-email/confirm-email.component";
-import { ForgotPasswordComponent } from "./pages/forgot-password/forgot-password.component";
-import { LoginComponent } from "./pages/login/login.component";
-import { PendingConfirmationComponent } from "./pages/pending-confirmation/pending-confirmation.component";
-import { RegisterComponent } from "./pages/register/register.component";
-import { ResendEmailComponent } from "./pages/resend-email/resend-email.component";
-import { ResetPasswordComponent } from "./pages/reset-password/reset-password.component";
-import { AuthGuardService as AuthGuard } from "./services/auth-guard.service";
+import { AuthGuard } from "./services/auth.guard";
 
 const routes: Routes = [
   {
@@ -20,42 +12,43 @@ const routes: Routes = [
     children: [
       {
         path: AUTH_ROUTES.LOGIN,
-        component: LoginComponent,
+        loadChildren: () => import("./pages/auth-login/auth-login.module").then((m) => m.AuthLoginPageModule),
         data: { requiredState: "logout" },
       },
       {
         path: AUTH_ROUTES.REGISTER,
-        component: RegisterComponent,
+        loadChildren: () => import("./pages/auth-register/auth-register.module").then((m) => m.AuthRegisterPageModule),
         data: { requiredState: "logout" },
       },
       {
         path: AUTH_ROUTES.FORGOT_PASSWORD,
-        component: ForgotPasswordComponent,
+        loadChildren: () => import("./pages/auth-forgot-password/auth-forgot-password.module").then((m) => m.AuthForgotPasswordPageModule),
         data: { requiredState: "logout" },
       },
       {
         path: AUTH_ROUTES.RESET_PASSWORD,
-        component: ResetPasswordComponent,
+        loadChildren: () => import("./pages/auth-reset-password/auth-reset-password.module").then((m) => m.AuthResetPasswordPageModule),
         data: { requiredState: "logout" },
       },
       {
         path: AUTH_ROUTES.CONFIRM_EMAIL,
-        component: ConfirmEmailComponent,
+        loadChildren: () => import("./pages/auth-confirm-email/auth-confirm-email.module").then((m) => m.AuthConfirmEmailPageModule),
         data: { requiredState: "logout" },
       },
       {
         path: AUTH_ROUTES.PENDING_CONFIRMATION,
-        component: PendingConfirmationComponent,
+        loadChildren: () =>
+          import("./pages/auth-pending-confirmation/auth-pending-confirmation.module").then((m) => m.AuthPendingConfirmationPageModule),
         data: { requiredState: "logout" },
       },
       {
         path: AUTH_ROUTES.RESEND_EMAIL,
-        component: ResendEmailComponent,
+        loadChildren: () => import("./pages/auth-resend-email/auth-resend-email.module").then((m) => m.AuthResendEmailPageModule),
         data: { requiredState: "logout" },
       },
       {
         path: AUTH_ROUTES.CHANGE_PASSWORD,
-        component: ChangePasswordComponent,
+        loadChildren: () => import("./pages/auth-change-password/auth-change-password.module").then((m) => m.AuthChangePasswordPageModule),
         data: { requiredState: "login" },
       },
       {

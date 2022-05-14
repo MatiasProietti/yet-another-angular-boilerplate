@@ -3,9 +3,7 @@ import { Injectable } from "@angular/core";
 import { environment } from "@environments/environment";
 import { Observable } from "rxjs";
 
-@Injectable({
-  providedIn: "root",
-})
+@Injectable()
 export class AuthRepositoryService {
   constructor(private httpClient: HttpClient) {}
 
@@ -40,3 +38,5 @@ export class AuthRepositoryService {
     return this.httpClient.post<T>(`${environment.apiUrl}/auth/resend-email`, data);
   }
 }
+
+// @todo: remove <T> and add typing
