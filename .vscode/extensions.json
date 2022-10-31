@@ -1,9 +1,65 @@
 {
+  // See http://go.microsoft.com/fwlink/?LinkId=827846 to learn about workspace recommendations.
+  // Extension identifier format: ${publisher}.${name}. Example: vscode.csharp
+
+  // List of extensions which should be recommended for users of this workspace.
   "recommendations": [
+    /* ============== ANGULAR ============== */
+    "cyrilletuzi.angular-schematics",
+    // Adds the generate command to the right-click menu.
+
+    "Angular.ng-template",
+    // Angular Autocomplete.
+
+    "johnpapa.angular2",
+    // Angular Snippets.
+
+    /* ============== IONIC ============== */
+    "fivethree.vscode-ionic-snippets",
+    // Ionic Snippets.
+
+    /* ============== TYPESCRIPT ============== */
+
     "dbaeumer.vscode-eslint",
+    // ESLint.
+
+    /* ============== HTML ============== */
+    "formulahendry.auto-rename-tag",
+    // Automatically renames the both html tags when renaming one.
+
+    "pranaygp.vscode-css-peek",
+    // Adds Go To Definition (ctrl + click) for CSS classes and IDs on HTML files
+
+    /* ============== GIT ============== */
     "eamodio.gitlens",
+    // Adds a lot of features for Git. The most important one is the tooltip that allows you to see the last changes for a specific line of code by hovering it.
+
+    /* ============== MISC ============== */
+    "oouo-diogo-perdigao.docthis",
+    // Adds the option to automatically generate JSDoc comments for JS and TS files.
+
+    "kisstkondoros.vscode-gutter-preview",
+    // Shows preview of images in code.
+
+    "johnpapa.vscode-peacock",
+    // Assigns a different color to each opened workspace.
+
+    "PKief.material-icon-theme",
+    // Changes the icons of files and folders
+
     "esbenp.prettier-vscode",
-    "angular.ng-template",
-    "pkief.material-icon-theme"
+    // Prettier.
+
+    "wayou.vscode-todo-highlight",
+    // Highlights @todo comments.
+
+    "christian-kohler.npm-intellisense",
+    // Intellisense for npm
+
+    "EditorConfig.EditorConfig",
+    // Adds the possibility to configure the project with a file. This configuration will override the user's
+
+    "2gua.rainbow-brackets"
+    // Assigns a different color to each bracket pair.
   ]
 }
