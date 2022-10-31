@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "json-server": "node ./src/json-server/server.js"
+    "json-server": "node ./src/json-server/server.js",
+    "prepare": "husky install"
   },
   "private": true,
   "dependencies": {
