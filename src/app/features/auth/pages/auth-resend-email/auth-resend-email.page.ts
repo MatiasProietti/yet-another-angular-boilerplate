@@ -35,9 +35,9 @@ export class AuthResendEmailPage {
       .resendEmail($event['email'] as string)
       .subscribe({
         next: () => {
-          this.notificationSrv.add(NotificationType.SUCCESS, 'Verification email sent successfully');
+          this.notificationSrv.add({ type: NotificationType.SUCCESS, title: 'Verification email sent successfully' });
         },
-        error: (error: BackendError) => this.notificationSrv.add(NotificationType.ERROR, error.message),
+        error: (error: BackendError) => this.notificationSrv.add({ type: NotificationType.ERROR, title: error.message }),
       })
       .add(() => (this.loading = false));
   }

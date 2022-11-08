@@ -59,10 +59,17 @@ export class AuthChangePasswordPage {
       .changePassword($event['oldPassword'] as string, $event['newPassword'] as string)
       .subscribe({
         next: () => {
-          this.notificationSrv.add(NotificationType.SUCCESS, 'Password changed successfully');
+          this.notificationSrv.add({
+            type: NotificationType.SUCCESS,
+            title: 'Password changed successfully',
+          });
           void this.router.navigate([AUTH_ROUTES.BASE, AUTH_ROUTES.LOGIN]);
         },
-        error: (error: BackendError) => this.notificationSrv.add(NotificationType.ERROR, error.message),
+        error: (error: BackendError) =>
+          this.notificationSrv.add({
+            type: NotificationType.ERROR,
+            title: error.message,
+          }),
       })
       .add(() => (this.loading = false));
   }

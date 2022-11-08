@@ -42,9 +42,9 @@ export class AuthLoginPage {
       .login($event['username'] as string, $event['password'] as string, $event['rememberMe'] as boolean)
       .subscribe({
         next: () => {
-          this.notificationSrv.add(NotificationType.SUCCESS, 'Logged in successfully');
+          this.notificationSrv.add({ type: NotificationType.SUCCESS, title: 'Logged in successfully' });
         },
-        error: (error: BackendError) => this.notificationSrv.add(NotificationType.ERROR, error.message),
+        error: (error: BackendError) => this.notificationSrv.add({ type: NotificationType.ERROR, title: error.message }),
       })
       .add(() => (this.loading = false));
   }

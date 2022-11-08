@@ -1,32 +1,56 @@
-import { Component, Input, Output, EventEmitter, ViewEncapsulation, HostBinding } from "@angular/core";
-import { NotificationType } from "../../constants/notification-type";
-import { NotificationConfig } from "../../interfaces/notification-config";
+import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output, ViewEncapsulation } from '@angular/core';
+import { NOTIFICATION_DEFAULTS } from '../../constants/notification-defaults';
+import { NotificationType } from '../../constants/notification-type';
 
 @Component({
-  selector: "app-notification-content",
-  templateUrl: "./notification-content.component.html",
-  styleUrls: ["./notification-content.component.scss"],
+  selector: 'app-notification-content',
+  templateUrl: './notification-content.component.html',
+  styleUrls: ['./notification-content.component.scss'],
   encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NotificationContentComponent implements NotificationConfig {
-  @HostBinding() class = "app-notification-content";
-  @Input() type: NotificationType = NotificationType.ERROR;
-  @Input() title = "";
-  @Input() text = "";
-  @Input() duration = 5000;
+export class NotificationContentComponent {
+  @HostBinding() class = 'app-notification-content';
 
-  @Output() dismiss = new EventEmitter();
+  public icon!: string;
+  public iconClass!: string;
+  public _type!: NotificationType;
+  public _duration!: string;
 
-  constructor() {}
-
-  public close(): void {
-    this.dismiss.emit("Closed");
+  @Input() title: string = '';
+  @Input() text?: string;
+  @Input() set duration(duration: string | undefined) {
+    this._duration = (duration ?? NOTIFICATION_DEFAULTS.DURATION) + 'ms';
   }
 
-  public getIcon(): string {
-    if (this.type === NotificationType.ERROR) return "error";
-    else if (this.type === NotificationType.WARNING) return "error";
-    else if (this.type === NotificationType.SUCCESS) return "check_circle";
-    else return "info";
+  @Input() set type(type: NotificationType) {
+    this._type = type;
+    this.icon = this.getIcon();
+    this.iconClass = this.getIconClass();
+  }
+
+  /**
+   * @description Emitted when the user clicks on the close button or the timer runs out
+   */
+  @Output() dismiss = new EventEmitter();
+
+  public close(): void {
+    this.dismiss.emit();
+  }
+
+  private getIcon(): string {
+    switch (this._type) {
+      case NotificationType.ERROR:
+      case NotificationType.WARNING:
+        return 'error';
+      case NotificationType.SUCCESS:
+        return 'check_circle';
+      case NotificationType.INFO:
+        return 'info';
+    }
+  }
+
+  private getIconClass(): string {
+    return this._type;
   }
 }
