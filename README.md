@@ -46,8 +46,8 @@
   - [ ] Make color variables available in css and ts
 - [ ] Unsubscribe onDestroy (performance)
 - [ ] Refactor CSS where !important is used
-- [ ] Update to Angular 14
-- [ ] Update libraries
+- [x] Update to Angular 14
+- [x] Update libraries
 - [ ] Refactor html/css (grid and responsive elements)
 - [ ] Move reusable components/modules to a library
 
