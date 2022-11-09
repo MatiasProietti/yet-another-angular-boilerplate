@@ -1,7 +1,7 @@
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { environment } from "@environments/environment";
-import { Observable } from "rxjs";
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { environment } from '@environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class AuthRepositoryService {
@@ -39,4 +39,5 @@ export class AuthRepositoryService {
   }
 }
 
-// @todo: remove <T> and add typing
+// @todo: remove <T> and add proper models
+// @todo: implement adapters (toBackend, fromBackend)
