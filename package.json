@@ -11,6 +11,10 @@
     "json-server": "node ./src/json-server/server.js",
     "prepare": "husky install"
   },
+  "engines": {
+    "npm": "^8.5.5",
+    "node": "^16.10.0"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^14.2.9",
