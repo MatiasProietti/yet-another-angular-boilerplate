@@ -2,7 +2,9 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
     "analytics": false,
-    "defaultCollection": "@angular-eslint/schematics"
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   },
   "version": 1,
   "newProjectRoot": "projects",
@@ -33,9 +35,16 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              { "input": "node_modules/@fortawesome/fontawesome-free/svgs/", "output": "assets/icons", "glob": "**/*" }
+              {
+                "input": "node_modules/@fortawesome/fontawesome-free/svgs/",
+                "output": "assets/icons",
+                "glob": "**/*"
+              }
             ],
-            "styles": ["src/styles.scss", "bootstrap/dist/css/bootstrap-grid.min.css"],
+            "styles": [
+              "src/styles.scss",
+              "bootstrap/dist/css/bootstrap-grid.min.css"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -78,7 +87,10 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "options": { "liveReload": true, "hmr": true },
+          "options": {
+            "liveReload": true,
+            "hmr": true
+          },
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
@@ -107,20 +119,29 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              { "input": "node_modules/@fortawesome/fontawesome-free/svgs/", "output": "assets/icons", "glob": "**/*" }
+              {
+                "input": "node_modules/@fortawesome/fontawesome-free/svgs/",
+                "output": "assets/icons",
+                "glob": "**/*"
+              }
             ],
-            "styles": ["src/styles.scss", "bootstrap/dist/css/bootstrap-grid.min.css"],
+            "styles": [
+              "src/styles.scss",
+              "bootstrap/dist/css/bootstrap-grid.min.css"
+            ],
             "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
           }
         }
       }
     }
-  },
-  "defaultProject": "yet-another-angular-boilerplate"
+  }
 }

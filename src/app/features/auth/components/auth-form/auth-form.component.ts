@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { FormFieldGroup } from '@app/shared/models/form-field-group';
 import { FormValue } from '@app/shared/models/form-value';
 import { MatErrorService } from '@app/shared/services/mat-error.service';
@@ -49,11 +49,11 @@ export class AuthFormComponent implements OnInit, OnChanges {
    */
   @Output() formSubmit = new EventEmitter<FormValue>();
 
-  public form!: FormGroup;
+  public form!: UntypedFormGroup;
   public revealPassword = false;
   public readonly forgotPasswordUrl = `/${AUTH_ROUTES.BASE}/${AUTH_ROUTES.FORGOT_PASSWORD}`;
 
-  constructor(public matErrorSrv: MatErrorService, private formBuilder: FormBuilder) {}
+  constructor(public matErrorSrv: MatErrorService, private formBuilder: UntypedFormBuilder) {}
 
   public ngOnInit(): void {
     this.mapFields();
